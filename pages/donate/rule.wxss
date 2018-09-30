@@ -1,0 +1,54 @@
+/* pages/donate/rule.wxss */
+.para {
+  width: 100%;
+}
+
+.title {
+  padding: 50rpx 20rpx 10rpx 20rpx;
+  text-align: center;
+  font-size: 40rpx;
+  line-height: 70rpx;
+  box-sizing: border-box;
+}
+
+.content {
+  padding: 20rpx 50rpx;
+  height: 600rpx;
+  text-align: left;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  box-sizing: border-box;
+}
+
+.license {
+  padding: 50rpx 0rpx 20rpx 0rpx;
+  width:100%;
+  text-align:center;
+  box-sizing: border-box;
+}
+
+checkbox .wx-checkbox-input {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 0;
+}
+
+.license-text {
+  font-size: 30rpx;
+  line-height: 50rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  
+}
+
+.btn-style{
+  width: 80%;
+  font-size: 40rpx;
+  line-height: 110rpx;
+  border-radius: 0;
+}
+
+.btn-style::after {
+  border-width: 0;
+  
+}

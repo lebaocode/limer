@@ -1,0 +1,6 @@
+<!--pages/donate/scanguide.wxml-->
+<view class="para">
+  <view class="title">请扫描书背面的ISBN码</view>
+  <image class="sample" mode="aspectFit" src="/pages/images/barcode-sample.png"></image>
+  <button bindtap="beginScan" class="btn-style">开始扫码</button>
+</view>

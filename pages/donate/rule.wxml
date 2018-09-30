@@ -1,0 +1,21 @@
+<!--pages/donate/rule.wxml-->
+<view class="para">
+  <view class="title">捐书规则</view>
+  <scroll-view class="content" scrole-y>
+    <text>
+  在捐书之前，请确认您同意我们的捐书规则：
+
+     1. 只捐赠九成新的书。九成新是指，无大片字迹、涂画，无水渍、污渍。
+
+     2. 捐赠成功后，书仍然留在您那。只有当发生借阅行为时，才会有快递上门取书。
+
+     3. 捐书后，3个月后，可申请取回图书。取回的图书保证九成新。
+    </text>
+  </scroll-view>
+
+  <checkbox-group bindchange="checkboxChange" class="license">
+    <checkbox value="agree" /><text id="license-text" class="license-text" style="color:{{licenseCurColor}}">我确认已查看用户协议</text>
+  </checkbox-group>
+ 
+  <button bindtap="btnClick" class="btn-style" style="color:{{btnCurColor}};background-color:{{btnCurBgColor}}">我同意</button>
+</view>
