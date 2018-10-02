@@ -1,0 +1,3 @@
+<!--pages/donate/canvastest.wxml-->
+
+<canvas style="width:600px;height:900px;"  canvas-id="canvasShare" binderror="canvasError"></canvas>

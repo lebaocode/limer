@@ -12,6 +12,7 @@ Page({
   //事件处理函数
   onLoad: function () {
     if (app.globalData.userInfo) {
+      console.log("xxx")
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
@@ -35,6 +36,7 @@ Page({
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
+      console.log("?")
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo

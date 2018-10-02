@@ -1,0 +1,17 @@
+<!--pages/donate/share.wxml-->
+
+<view class="whole-page">
+  <button class="btn-style" bindtap="gotoBookList">去书库看看</button>
+  <button class="btn-style" open-type="share">邀请朋友</button>
+</view>
+
+<view class="mask" style="display:{{maskDisplay}}">
+</view>
+
+<scroll-view class="pic-area" style="display:{{shareDisplay}}">
+  <image src="{{sharePic}}" mode="widthFix" class="real-pic" />
+  <view class="row-center" bindtap="closeLayer"><image src="/pages/images/close.png" mode="widthFix" class="close-icon" /></view>
+</scroll-view>
+
+
+<canvas class="share-pic" canvas-id="share-pic" binderror="canvasError"></canvas>

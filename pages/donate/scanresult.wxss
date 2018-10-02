@@ -12,9 +12,9 @@
 
 .continue-scan {
   width: 100%;
-  height: 70rpx;
+  height: 90rpx;
   text-align: center;
-  line-height: 70rpx;
+  line-height: 90rpx;
   font-size: 30rpx;
   color: #AFCB21;
 }

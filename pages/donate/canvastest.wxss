@@ -1,0 +1,27 @@
+/* pages/donate/canvastest.wxss */
+
+.pic-area {
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  position : fixed;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 50rpx;
+}
+.canvas-share{
+  width: 600px;
+  height: 900px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.real-pic {
+  
+  width: 100%;
+}

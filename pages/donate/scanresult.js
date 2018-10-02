@@ -189,5 +189,10 @@ Page({
     wx.navigateBack({
       delta: 1
     })
+  },
+  submitDonate: function() {
+    wx.navigateTo({
+      url: '/pages/donate/share',
+    })
   }
 })

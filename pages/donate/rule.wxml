@@ -1,5 +1,5 @@
 <!--pages/donate/rule.wxml-->
-<view class="para">
+<scroll-view scroll-y class="para">
   <view class="title">捐书规则</view>
   <scroll-view class="content" scrole-y>
     <text>
@@ -18,4 +18,4 @@
   </checkbox-group>
  
   <button bindtap="btnClick" class="btn-style" style="color:{{btnCurColor}};background-color:{{btnCurBgColor}}">我同意</button>
-</view>
+</scroll-view>
