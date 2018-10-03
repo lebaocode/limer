@@ -1,1 +1,23 @@
 <!--pages/books/index.wxml-->
+
+<view><image class="search-icon" src="/pages/images/search.png"></image></view>
+
+<scroll-view scroll-x class="cat-nav">
+  <label class="{{cat.selected ? 'cat-item-selected' : 'cat-item'}}" bindtap="switchCat" wx:for="{{catList}}" wx:for-item="cat" wx:key="id" data-catid="{{cat.id}}">{{cat.name}}</label>
+</scroll-view>
+
+<scroll-view scroll-y class="book-area">
+  <block wx:if="{{bookList.length > 0}}">
+  <view id="bookItem{{idx}}" class="book-item" wx:for="{{bookList}}" wx:for-index="idx" wx:for-item="book" wx:key="isbn" data-isbn="{{book.isbn}}" bindtap="gotoBookDetail">
+    <view class="book-cover"><image class="book-cover-img" src="{{book.cover}}" /></view>
+    <view class="book-info">
+      <view class="book-title">{{book.title}}</view>
+      <view class="book-author">{{book.author}}</view>
+    </view>
+  </view>
+  </block>
+
+  <block wx:else="">
+  <view class="hint-nobook">还没有图书哎！</view>
+  </block>
+</scroll-view>

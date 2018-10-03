@@ -1,11 +1,11 @@
-// pages/donate/rule.js
+// pages/books/rule.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    storageKeyAgreeRule: "hasAgreeDonateRule",
+    storageKeyAgreeRule: "hasAgreeBorrowRule",
 
     licenseAgreeColor: "#000",
     licenseDisagreeColor: "#999",
@@ -25,8 +25,11 @@ Page({
   onLoad: function (options) {
     var res = wx.getStorageSync(this.data.storageKeyAgreeRule)
     if (res && res.data == "agree") {
-      wx.redirectTo({
-        url: '/pages/donate/scanguide',
+      wx.navigateBack({
+        delta: 1
+      })
+      wx.navigateTo({
+        url: '/pages/books/mail',
       })
     }
   },
@@ -78,29 +81,32 @@ Page({
   onShareAppMessage: function () {
 
   },
-  checkboxChange: function(e) {
-    if (e.detail.value=="agree") {
+  checkboxChange: function (e) {
+    if (e.detail.value == "agree") {
       this.setData({
         licenseCurColor: this.data.licenseAgreeColor,
         btnCurColor: this.data.btnAgreeColor,
-        btnCurBgColor: this.data.btnAgreeBgColor 
+        btnCurBgColor: this.data.btnAgreeBgColor
       })
     } else {
       this.setData({
         licenseCurColor: this.data.licenseDisagreeColor,
         btnCurColor: this.data.btnDisagreeColor,
-        btnCurBgColor: this.data.btnDisagreeBgColor 
+        btnCurBgColor: this.data.btnDisagreeBgColor
       })
     }
   },
-  btnClick: function(){
+  btnClick: function () {
     if (this.data.btnCurColor == this.data.btnAgreeColor) {
       wx.setStorageSync(this.data.storageKeyAgreeRule, {
         data: 'agree'
       })
-      wx.redirectTo({
-        url: '/pages/donate/scanguide'
+      wx.navigateBack({
+        delta: 1
       })
-    } 
+      wx.redirectTo({
+        url: '/pages/books/mail'
+      })
+    }
   }
 })

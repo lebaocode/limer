@@ -19,7 +19,7 @@ Page({
       })
       
       wx.switchTab({
-        url: '/pages/donate/rule',
+        url: '/pages/books/index',
       })
     } else if (this.data.canIUse){
       console.log("here");
@@ -31,7 +31,7 @@ Page({
           hasUserInfo: true
         })
         wx.switchTab({
-          url: '/pages/donate/rule',
+          url: '/pages/books/index',
         })
       }
     } else {
@@ -56,7 +56,7 @@ Page({
       hasUserInfo: true
     })
     wx.switchTab({
-      url: '/pages/donate/rule',
+      url: '/pages/books/index',
     })
   }
 })

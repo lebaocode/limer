@@ -1,51 +1,24 @@
-/* pages/donate/scanresult.wxss */
-.whole-page {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0rpx 0rpx 150rpx 0rpx;
-}
-
-.book-list {
-  padding: 0rpx 0rpx;
-  box-sizing: border-box;
-}
-
-.continue-scan {
-  width: 100%;
-  height: 90rpx;
-  text-align: center;
-  line-height: 90rpx;
-  font-size: 30rpx;
-  color: #AFCB21;
-}
+/* pages/books/detail.wxss */
 
 .book-item {
-  height: 280rpx;
+  height: 400rpx;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  border-top: 1rpx solid #EEEEEE;
+  border-bottom: 1rpx solid #EEEEEE;
   width: 100%;
   box-sizing: border-box;
-  padding: 40rpx 50rpx;
+  padding: 50rpx 50rpx;
 }
 
 .book-cover {
   margin-right: 10rpx;
+  margin-top: 10rpx;
 }
 
 .book-cover-img {
-  width: 200rpx;
-  height: 200rpx;
-}
-
-.book-first-line {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  box-sizing: border-box;
+  width: 300rpx;
+  height: 300rpx;
 }
 
 .book-info {
@@ -58,56 +31,43 @@
 .book-title {
   font-size: 35rpx;
   color: #000;
-  line-height: 35rpx;
+  line-height: 55rpx;
   overflow: hidden;
-  height: 35rpx;
   width: 100%;
   box-sizing: border-box;
-  padding-right: 10rpx;
-
-}
-
-.book-action {
-  width: 35rpx;
-  height: 35rpx;
-}
-
-.btn-delete-item {
-  width: 35rpx;
-  height: 35rpx;
 }
 
 .book-author {
   font-size: 30rpx;
   color: #999;
-  line-height: 80rpx;
-  overflow: hidden;
-  height: 80rpx;
+  line-height: 50rpx;
+  width: 100%;
+  margin-top: 15rpx;
 }
 
-.book-lastline {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 85rpx;
+.book-detail {
+  width: 100%;
   box-sizing: border-box;
-  padding:55rpx 0rpx 0rpx 0rpx;
-  line-height: 30rpx;
+  padding: 0rpx 50rpx 150rpx 30rpx;
 }
 
-.book-price {
+.column-title {
+  font-size: 35rpx;
+  line-height: 35rpx;
+  height: 35rpx;
+  color: #AFCB21;
+  border-left: 1px solid #AFCB21;
+  box-sizing: border-box;
+  margin: 50rpx 0rpx 50rpx 0rpx;
+  padding: 0rpx 50rpx 0rpx 20rpx;
+}
+
+.column-content {
   font-size: 30rpx;
-  color: #999;
-}
-
-.book-score {
-  font-size: 30rpx;
-  color: #999;
-}
-
-.book-score-emp {
-  color: red;
-  padding: 0rpx 5rpx 0rpx 10rpx;
+  line-height: 48rpx;
+  color: #000;
+  box-sizing: border-box;
+  padding: 0rpx 0rpx 0rpx 20rpx;
 }
 
 .bottombar {
@@ -130,9 +90,10 @@
   line-height: 110rpx;
   color: #999;
   width: 100%;
+  text-align: center;
 }
 
-.buttom-button {
+.bottom-button {
   box-sizing: border-box;
   padding: 0rpx 0rpx 0rpx 0rpx;
 }
@@ -148,5 +109,19 @@
 }
 
 .btn-style::after {
+  border-width: 0;
+}
+
+.btn-inactive-style{
+  width: 250rpx;
+  font-size: 35rpx;
+  line-height: 110rpx;
+  height: 110rpx;
+  border-radius: 0;
+  color: #AAA;
+  background-color: #E0E0E0;
+}
+
+.btn-inactive-style::after {
   border-width: 0;
 }

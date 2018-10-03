@@ -1,0 +1,17 @@
+<!--pages/my/scorerule.wxml-->
+<view class="whole-page">
+  <view class="title">书币奖惩规则</view>
+  <scroll-view class="content" scroll-y>
+    <view class="section">
+      <view class="btn-style">去关注</view>
+      <view class="desc">第一次关注公众号</view>
+      <view class="score">+100书币</view>
+    </view>
+
+    <view class="section">
+      <view class="btn-style">去邀请</view>
+      <view class="desc">邀请好友关注公众号</view>
+      <view class="score">+10书币/每邀请1位</view>
+    </view>
+  </scroll-view>
+</view>

@@ -20,8 +20,8 @@
 
 </view>
 <view class="bottombar">
-  <view class="total-stat">总计：{{bookTotalNum}}本书，<text class="book-score-emp">+{{bookTotalScore}}</text>书币</view>
-  <view class="affirm-donate">
+  <view class="bottom-text">总计：{{bookTotalNum}}本书，<text class="book-score-emp">+{{bookTotalScore}}</text>书币</view>
+  <view class="bottom-button">
     <button class="btn-style" bindtap="submitDonate">确认捐赠</button>
   </view>
 </view>

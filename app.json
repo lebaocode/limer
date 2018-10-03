@@ -1,12 +1,18 @@
 {
   "pages": [
+    "pages/books/index",
     "pages/donate/rule",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/books/index",
     "pages/my/index",
     "pages/donate/scanguide",
-    "pages/donate/scanresult"
+    "pages/donate/scanresult",
+    "pages/donate/share",
+    "pages/donate/canvastest",
+    "pages/books/detail",
+    "pages/books/rule",
+    "pages/books/mail",
+    "pages/my/scorerule"
   ],
   "window": {
     "backgroundTextStyle": "light",
