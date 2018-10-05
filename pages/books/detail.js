@@ -11,8 +11,9 @@ Page({
     storageKeyHasMail: "hasMail",
 
     book: {},
-    curUserScore: 0,
-    bookStatus: 5, //1可借阅 2已借出 3无此书 4借阅快递中 5借阅中（签收后）
+    curUserScore: 0,//用户当前书币
+    bookStoreNum: 0,//本书当前库存数量
+    bookStatus: 2, //1可借阅 2可预约 3借阅中
   },
 
   /**
@@ -94,17 +95,40 @@ Page({
       book: book
     })
   },
-  submitOder: function() {
-    //预约
-    wx.showToast({
-      title: '已预约',
-      icon: 'none'
+  confirmScoreCost: function() {
+    var isbn = this.data.book.isbn
+
+    wx.showModal({
+      title: '书币消耗确认',
+      content: this.data.curUserScore > 10 ? "此次借阅将消耗 10 书币" : "您的书币不足",
+      confirmText: this.data.curUserScore > 10 ? "确认" : "查看赚取方法",
+      confirmColor: "#AFCB21",
+      success: (res) => {
+        if (res.confirm) {
+          if (this.data.curUserScore < 10) {
+            wx.navigateTo({
+              url: '/pages/my/scorerule',
+            })
+          } else {
+            //确认借阅
+            var hintText = "成功"
+            if (this.data.bookStatus == 1) {
+              hintText = "借阅成功！\n请注意接收公众号快递提醒消息！";
+            } else if (this.data.bookStatus == 2) {
+              hintText = "预约成功！\n有库存时会通过公众号提醒您！";
+            }
+            wx.showToast({
+              title: hintText,
+              icon: 'none'
+            })
+          }
+        }
+      }
     })
   },
-  submitDonate: function() {
-    wx.switchTab({
-      url: '/pages/donate/rule',
-    })
+  submitOrder: function() {
+    //预约
+    this.submitBorrow()
   },
   submitBorrow: function() {
     var res = wx.getStorageSync(this.data.storageKeyAgreeRule)
@@ -128,7 +152,10 @@ Page({
     var userInfo = app.globalData.userInfo
     if (!userInfo) {
       //未授权，先获取授权
-      
+      wx.navigateTo({
+        url: '/pages/index/index?switchTab=false&url=/pages/books/detail?isbn=' + this.data.book.isbn,
+      })
+      return;
     }
 
     //看是否填写邮寄地址
@@ -142,12 +169,7 @@ Page({
     }
 
     //可以借
-    var isbn = this.data.book.isbn
-    
-    wx.showToast({
-      title: '借阅成功！\n\n即将安排快递寄送，\n请注意接收。',
-      icon: 'none'
-    })
+    this.confirmScoreCost()
   },
   gotoScore: function() {
     wx.navigateTo({

@@ -9,12 +9,12 @@
 
      2. 捐赠成功后，书仍然留在您那。只有当发生借阅行为时，才会有快递上门取书。
 
-     3. 捐书后，3个月后，可申请取回图书。取回的图书保证九成新。
+     3. 捐书后，3个月后，可随时申请取回图书。我们会在2个月内为您寄回图书，并保证取回的图书九成新。
     </text>
   </scroll-view>
 </view>
 
-<view class="bottom-area">
+<view class="bottom-area" style="{{hiddenStyle}}">
   <checkbox-group bindchange="checkboxChange" class="license">
     <checkbox value="agree" /><text id="license-text" class="license-text" style="color:{{licenseCurColor}}">我确认已查看用户协议</text>
   </checkbox-group>

@@ -22,25 +22,25 @@
   },
   "tabBar": {
     "backgroundColor": "#FEFEFE",
-    "selectedColor": "#000",
-    "color": "#999999",
+    "selectedColor": "#AFCB21",
+    "color": "#ADA9A8",
     "list": [
       {
         "pagePath": "pages/books/index",
         "iconPath": "pages/images/book-gray.png",
-        "selectedIconPath": "pages/images/book.png",
+        "selectedIconPath": "pages/images/book-green.png",
         "text": "借书"
       },
       {
-        "pagePath": "pages/donate/rule",
+        "pagePath": "pages/donate/scanguide",
         "iconPath": "pages/images/scan-barcode-gray.png",
-        "selectedIconPath": "pages/images/scan-barcode.png",
+        "selectedIconPath": "pages/images/scan-barcode-green.png",
         "text": "捐书"
       },
       {
         "pagePath": "pages/my/index",
         "iconPath": "pages/images/my-gray.png",
-        "selectedIconPath": "pages/images/my.png",
+        "selectedIconPath": "pages/images/my-green.png",
         "text": "我的"
       }
     ]

@@ -16,17 +16,18 @@ Page({
     btnDisagreeColor: "#AAA",
     btnDisagreeBgColor: "#E0E0E0",
     btnCurColor: "#AAA",
-    btnCurBgColor: "#E0E0E0"
+    btnCurBgColor: "#E0E0E0",
+
+    hiddenStyle: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var res = wx.getStorageSync(this.data.storageKeyAgreeRule)
-    if (res && res.data == "agree") {
-      wx.redirectTo({
-        url: '/pages/donate/scanguide',
+    if (options.onlyview) {
+      this.setData({
+        hiddenStyle: "display:none"
       })
     }
   },
@@ -98,7 +99,7 @@ Page({
       wx.setStorageSync(this.data.storageKeyAgreeRule, {
         data: 'agree'
       })
-      wx.redirectTo({
+      wx.switchTab({
         url: '/pages/donate/scanguide'
       })
     } 

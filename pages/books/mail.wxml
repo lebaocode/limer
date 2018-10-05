@@ -3,14 +3,14 @@
 <view class="whole-page">
   <view class="line-text"><text>请填写您的邮寄信息，快递会上门送书。</text></view>
   <view class="section">
-    <input name="mail" placeholder='请输入您的邮寄地址' maxlength='250' class="input-long" />
+    <input name="mail" placeholder='邮寄地址' maxlength='250' class="input-long" />
   </view>
   <view class="section">
-    <input name="mobile" placeholder='请输入您的手机号' maxlength='11' type="number" class="input-long" />
+    <input name="mobile" placeholder='手机号' maxlength='11' type="number" class="input-long" />
   </view>
   <view class="section">
     <button bindtap="getVerifyCode" style="color:{{btnCodeCurColor}};background-color:{{btnCodeCurBgColor}}" class="verify-code">获取验证码</button>
-    <input name="code" bindinput="bindCodeInput" placeholder='请输入验证码' maxlength='6' type="number" class="input-code" />
+    <input name="code" bindinput="bindCodeInput" placeholder='验证码' maxlength='6' type="number" class="input-code" />
   </view>
   <view class="submit-button-line">
     <button form-type='submit' class="submit-button btn-style" style="color:{{btnSubmitCurColor}};background-color:{{btnSubmitCurBgColor}}">提交</button>

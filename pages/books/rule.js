@@ -16,20 +16,18 @@ Page({
     btnDisagreeColor: "#AAA",
     btnDisagreeBgColor: "#E0E0E0",
     btnCurColor: "#AAA",
-    btnCurBgColor: "#E0E0E0"
+    btnCurBgColor: "#E0E0E0",
+
+    hiddenStyle: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var res = wx.getStorageSync(this.data.storageKeyAgreeRule)
-    if (res && res.data == "agree") {
-      wx.navigateBack({
-        delta: 1
-      })
-      wx.navigateTo({
-        url: '/pages/books/mail',
+    if (options.onlyview) {
+      this.setData({
+        hiddenStyle: "display:none"
       })
     }
   },
@@ -104,7 +102,7 @@ Page({
       wx.navigateBack({
         delta: 1
       })
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/books/mail'
       })
     }

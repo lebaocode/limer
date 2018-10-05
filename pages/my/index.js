@@ -1,18 +1,37 @@
 // pages/my/index.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    storageKeyUserInfo : "userInfo",
 
+    userLogo: "",
+    userName: "",
+
+    userScore: 120,
+    userDonateNum: 1,
+    userBorrowNum: 12
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var userInfo = app.globalData.userInfo
+    if (userInfo) {
+      this.setData({
+        userLogo: userInfo.avatarUrl,
+        userName: userInfo.nickName
+      })
+    } else {
+      wx.redirectTo({
+        url: '/pages/index/index?switchTab=true&url=/pages/my/index',
+      })
+    }
   },
 
   /**
@@ -62,5 +81,34 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  viewDonateRule: function() {
+    wx.navigateTo({
+      url: '/pages/donate/rule?onlyview=true',
+    })
+  },
+  viewBorrowRule: function () {
+    wx.navigateTo({
+      url: '/pages/books/rule?onlyview=true',
+    })
+  },
+  clearStorage: function() {
+    wx.showModal({
+      title: '提示',
+      content: '确认要清空缓存吗？',
+      success: function(res) {
+        if (res.confirm) {
+          wx.clearStorage({
+            success: () => {
+              wx.showToast({
+                title: '缓存数据清除完毕',
+                icon: 'none'
+              })
+            }
+          });
+        }
+      }
+    })
+    
   }
 })

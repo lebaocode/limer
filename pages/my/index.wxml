@@ -1,2 +1,69 @@
 <!--pages/my/index.wxml-->
-<text>pages/my/index.wxml</text>
+<scroll-view scroll-y class="bg">
+<view class="top-area">
+  <view class="user-logo"><image src="{{userLogo}}" /></view>
+  <view class="user-name">{{userName}}</view>
+  <view class="user-data">
+    <view class="data-info">
+      <view class="data-digit">{{userDonateNum}}</view>
+      <view class="data-name">已捐赠</view>
+    </view>
+    <view class="data-info">
+      <view class="data-digit">{{userBorrowNum}}</view>
+      <view class="data-name">已借阅</view>
+    </view>
+    <view class="data-info">
+      <view class="data-digit">{{userScore}}</view>
+      <view class="data-name">书币</view>
+    </view>
+  </view>
+</view>
+
+<view class="section">
+  <view class="line line-border-bottom">
+    <image class="icon-left" src="/pages/images/book-icon.png" />
+    <text class="line-text">我的借阅</text>
+    <image class="icon-right" src="/pages/images/arrow-right.png" />
+  </view>
+  <view class="line line-border-bottom">
+    <image class="icon-left" src="/pages/images/book-icon.png" />
+    <text class="line-text">我的预约</text>
+    <image class="icon-right" src="/pages/images/arrow-right.png" />
+  </view>
+  <view class="line line-border-bottom">
+    <image class="icon-left" src="/pages/images/book-icon.png" />
+    <text class="line-text">我的捐赠</text>
+    <image class="icon-right" src="/pages/images/arrow-right.png" />
+  </view>
+</view>
+
+<view class="section section-margin-top">
+  <view class="line line-border-bottom">
+    <image class="icon-left" src="/pages/images/score.png" />
+    <text class="line-text">书币奖惩规则</text>
+    <image class="icon-right" src="/pages/images/arrow-right.png" />
+  </view>
+  <view class="line line-border-bottom" bindtap="viewBorrowRule">
+    <image class="icon-left" src="/pages/images/score.png" />
+    <text class="line-text">借书规则</text>
+    <image class="icon-right" src="/pages/images/arrow-right.png" />
+  </view>
+  <view class="line line-border-bottom" bindtap="viewDonateRule">
+    <image class="icon-left" src="/pages/images/score.png" />
+    <text class="line-text">捐书规则</text>
+    <image class="icon-right" src="/pages/images/arrow-right.png" />
+  </view>
+</view>
+
+<view class="section section-margin-top">
+  <view class="line line-border-bottom" bindtap="clearStorage">
+    <image class="icon-left" src="/pages/images/clear.png" />
+    <text class="line-text">清除缓存数据</text>
+  </view>
+  <view class="line line-border-bottom">
+    <image class="icon-left" src="/pages/images/setting.png" />
+    <text class="line-text">设置</text>
+    <image class="icon-right" src="/pages/images/arrow-right.png" />
+  </view>
+</view>
+</scroll-view>
