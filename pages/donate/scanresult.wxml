@@ -2,17 +2,17 @@
 <view class="whole-page">
   <scroll-view scoll-y class="book-list">
     <view class="continue-scan" bindtap="continueScan">继续扫码</view>
-    <view id="bookItem{{idx}}" class="book-item" wx:for="{{bookList}}" wx:for-index="idx" wx:for-item="book" wx:key="isbn">
-       <view class="book-cover"><image class="book-cover-img" src="{{book.cover}}" /></view>
+    <view id="bookItem{{idx}}" class="book-item" wx:for="{{bookList}}" wx:for-index="idx" wx:for-item="book" wx:key="isbn13">
+       <view class="book-cover"><image class="book-cover-img" src="{{book.coverUrl}}" /></view>
        <view class="book-info">
         <view class="book-first-line">
           <view class="book-title">{{book.title}}</view>
-          <view class="book-action" ><image class="btn-delete-item" src="/pages/images/delete-gray.png" data-isbn="{{book.isbn}}" bindtap="deleteItem" /></view>
+          <view class="book-action" ><image class="btn-delete-item" src="/pages/images/delete-gray.png" data-isbn="{{book.isbn13}}" bindtap="deleteItem" /></view>
         </view>
         <view class="book-author">{{book.author}}</view>
         <view class="book-lastline">
-          <view class="book-price">{{book.price}}</view>
-          <view class="book-score"><text class="book-score-emp">+{{book.score}}</text>书币</view>
+          <view class="book-price">{{book.price/100}}</view>
+          <view class="book-score"><text class="book-score-emp">+10</text>书币</view>
         </view>
        </view>
     </view>

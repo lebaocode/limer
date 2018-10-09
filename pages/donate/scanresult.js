@@ -18,16 +18,14 @@ Page({
     if (oldBookList && oldBookList.length > 0) {
       console.log("read from storage")
       this.data.bookList = oldBookList;
-    } else {
-      this.mockBookList();
-    }
+    } 
 
     var paraIsbn = options.isbn;
     if (paraIsbn) {
       this.getBookInfo(paraIsbn);
     } 
 
-    this.confirmSetData();
+    
   },
 
   /**
@@ -83,7 +81,7 @@ Page({
     var curIndex = -1;
     var curBook = {};
     for (var i = 0; i < this.data.bookList.length; i++) {
-      if (this.data.bookList[i].isbn == curIsbn) {
+      if (this.data.bookList[i].isbn13 == curIsbn) {
         curIndex = i;
         curBook = this.data.bookList[i];
         break;
@@ -100,48 +98,53 @@ Page({
     
   },
   confirmSetData: function() {
-    var score = 0;
-    for (var i = 0; i < this.data.bookList.length; i++) {
-      var b = this.data.bookList[i];
-      score += b.score;
-    }
+    
     this.data.bookTotalNum = this.data.bookList.length;
-    this.data.bookTotalScore = score;
+    this.data.bookTotalScore = this.data.bookList.length*10;
 
     this.setData({
-      bookTotalScore: score,
+      bookTotalScore: this.data.bookTotalScore,
       bookList: this.data.bookList,
       bookTotalNum: this.data.bookList.length
     })
 
   },
   getBookInfo: function (isbn) {
-    var curBook = {
-      "cover": "/pages/images/bookcover-default-gray.png",
-      "title": "高效学习4",
-      "author": "[日] 和田秀树，蓝朔 著",
-      "isbn": "4",
-      "price": "￥60.00",
-      "score": 60
-    }
-    if (curBook) {
-      var found = false;
-      for (var i = 0; i < this.data.bookList.length; i++) {
-        if (this.data.bookList[i].isbn == isbn) {
-          found = true;
-          break;
+    console.log("getBookInfo: " + isbn);
+    wx.request({
+      url: 'https://www.limer.cn/json/getBookDetailByIsbn',
+      data: {
+        'isbn': isbn
+      },
+      header: {
+        'content-type': "apllication/json"
+      },
+      success: (res) => {
+        var curBook = res.data;
+        if (curBook) {
+          var found = false;
+          for (var i = 0; i < this.data.bookList.length; i++) {
+            if (this.data.bookList[i].isbn13 == isbn) {
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            this.data.bookList.unshift(curBook);
+            wx.setStorageSync(this.data.donateBookListStorageName, this.data.bookList);
+          } else {
+            wx.showToast({
+              title: '这本书已经扫过啦~',
+              icon: "none"
+            })
+          }
+
+          this.confirmSetData();
         }
       }
-      if (!found) {
-        this.data.bookList.unshift(curBook);
-        wx.setStorageSync(this.data.donateBookListStorageName, this.data.bookList);
-      } else {
-        wx.showToast({
-          title: '这本书已经扫过啦~',
-          icon: "none"
-        })
-      }
-    }
+    })
+
+    
     
   },
   mockBookList: function() {
@@ -191,8 +194,15 @@ Page({
     })
   },
   submitDonate: function() {
-    wx.navigateTo({
-      url: '/pages/donate/share',
+    wx.request({
+      url: '/json/submitDonate',
+      success: (res) => {
+        wx.navigateTo({
+          url: '/pages/donate/share',
+        })
+      }
     })
+
+    
   }
 })

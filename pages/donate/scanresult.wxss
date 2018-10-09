@@ -31,11 +31,11 @@
 }
 
 .book-cover {
-  margin-right: 10rpx;
+  margin-right: 30rpx;
 }
 
 .book-cover-img {
-  width: 200rpx;
+  width: 150rpx;
   height: 200rpx;
 }
 

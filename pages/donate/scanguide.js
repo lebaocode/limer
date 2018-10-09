@@ -70,11 +70,7 @@ Page({
   },
 
   beginScan: function() {
-    wx.navigateTo({
-      url: '/pages/donate/scanresult?isbn=4'
-    })
-
-  /** 
+    
     wx.scanCode({
       "scanType": ['barcode'],
       "success": (res) =>  {
@@ -88,6 +84,6 @@ Page({
           title: '扫码失败！请确认扫的是条形码！',
         })
       }
-    }) */
+    })
   }
 })
