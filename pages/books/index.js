@@ -6,61 +6,47 @@ Page({
    */
   data: {
     catList: [],
-    bookList: []
+    bookList: [],
+    curTag: "童书",
+    curStart: 0,
+    curLen: 20,
+    loaded: false
   },
-  mockCatList: function() {
+  getCatList: function() {
     return [
-      { "name": "互联网", "id": 1, "selected": true },
-      { "name": "经管", "id": 2, "selected": false },
-      { "name": "历史", "id": 3, "selected": false },
-      { "name": "励志", "id": 4, "selected": false },
-      { "name": "IT", "id": 5, "selected": false },
-      { "name": "文学", "id": 6, "selected": false },
-      { "name": "小说", "id": 7, "selected": false }
-    ]
-  },
-  mockBookList: function(){
-    return [
-      {
-        "cover": "/pages/images/book-sample1.jpg",
-        "title": "定位：争夺用户心智的战争（经典重译版）",
-        "subtitle": "争夺用户心智的战争",
-        "author": "[美] 艾·里斯（Al Ries），杰克·特劳特（Jack Trout） 著",
-        "isbn": "1",
-        "catid": 1
-      },
-      {
-        "cover": "/pages/images/bookcover-default-gray.png",
-        "title": "史记",
-        "author": "司马迁 著",
-        "isbn": "2",
-        "catid": 3
-      },
-      {
-        "cover": "/pages/images/book-sample2.jpg",
-        "title": "影响力",
-        "author": "[美] 罗伯特·B·西奥迪尼 著",
-        "isbn": "3",
-        "catid": 1
-      },
-      {
-        "cover": "/pages/images/bookcover-default-gray.png",
-        "title": "斗破苍穹",
-        "author": "唐家三少 著",
-        "isbn": "4",
-        "catid": 7
-      }
+      { "tag": "童书", "selected": true },
+      { "tag": "绘本",  "selected": false },
+      { "tag": "儿童文学",  "selected": false },
+      { "tag": "童话",  "selected": false },
+      { "tag": "科普", "selected": false },
+      { "tag": "传统文化", "selected": false },
+      { "tag": "教育", "selected": false }
     ]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var cList = this.mockCatList();
+    var cList = this.getCatList();
     this.setData({
       catList: cList
     })
-    this.switchCatId(1)
+
+    var tag = options.tag;
+    if (!tag) tag = this.data.curTag;
+    var start = options.start ? options.start : this.data.curStart;
+    if (start < 0) start = 0
+    var len = options.len ? options.len : this.data.curLen;
+    if (len < 20) len = 20
+    if (len > 100) len = 100
+
+    this.setData({
+      curTag: tag,
+      curStart: start,
+      curLen: len
+    })
+    this.switchCatId(tag, start, len);
+
   },
 
   /**
@@ -112,41 +98,97 @@ Page({
 
   },
   switchCat: function(e) {
-    var catId = e.target.dataset.catid;
-    this.switchCatId(catId)
+    this.setData({
+      loaded: false
+    })
+    var tag = e.target.dataset.tag;
+    this.setData({
+      curTag: tag,
+      curStart: 0
+    })
+    this.switchCatId(tag, 0, this.data.curLen)
   },
-  switchCatId: function(catId) {
+  switchCatId: function(tag, start, len) {
+    wx.showLoading({
+      title: '加载中...',
+    })
+
     for (var i=0;i<this.data.catList.length; i++) {
-      if (catId == this.data.catList[i].id) {
+      if (tag == this.data.catList[i].tag) {
         this.data.catList[i].selected = true;
       } else {
         this.data.catList[i].selected = false;
       }
     }
     this.setData({
-      catList: this.data.catList
+      catList: this.data.catList,
+      bookList: []
     })
 
     //获取类别对应的图书列表
-    this.getCatBookList(catId)
+    this.getCatBookList(tag, start, len)
   },
-  getCatBookList: function(catId) {
-    var mockList = this.mockBookList()
-    var bList = [];
-    for (var i = 0; i < mockList.length; i++) {
-      var b = mockList[i];
-      if (b.catid == catId) {
-        bList.push(b);
+  getCatBookList: function(tag, start, len) {
+    console.log("getCatBookList:"+ tag + " "+ start+" "+len)
+    wx.request({
+      url: 'https://www.limer.cn/json/getRecentBooks',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      data: {
+        "tag": tag,
+        "start": start,
+        "len": len,
+        "ue": "ISO-8859-1"
+      },
+      success: (res) => {
+        if (res.data && res.data.data) {
+          var newList = this.data.bookList.concat(res.data.data)
+          var size = newList.length
+          if (size > 200){
+            for (var i =0;i< size - 200;i++) {
+              newList.shift()
+            }
+          }
+
+          this.setData({
+            bookList: newList,
+            loaded: true
+          })
+        }
+        wx.hideLoading()
+      },
+      fail: (res) => {
+        console.log(res)
+        wx.hideLoading()
       }
-    }
-    this.setData({
-      bookList: bList
     })
   },
   gotoBookDetail: function(e) {
-    var isbn = e.target.dataset.isbn;
+    var isbn = e.currentTarget.dataset.isbn;
+    console.log("dataset isbn:" + isbn)
     wx.navigateTo({
       url: '/pages/books/detail?isbn=' + isbn,
     })
+  },
+  nextPage: function(){
+    if (this.data.bookList.length != this.data.curLen) return;
+
+    console.log("nextpage")
+    this.setData({
+      curStart: this.data.curStart + this.data.curLen
+    })
+    this.getCatBookList(this.data.curTag, this.data.curStart, this.data.curLen)
+  },
+  lastPage: function () {
+    if (this.data.curStart == 0) return;
+
+    console.log("lastpage")
+    this.setData({
+      curStart: this.data.curStart - this.data.curLen < 0 ? 0 : this.data.curStart - this.data.curLen
+    })
+
+    
+    this.getCatBookList(this.data.curTag, this.data.curStart, this.data.curLen)
   }
 })

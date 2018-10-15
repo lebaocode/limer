@@ -82,6 +82,11 @@ Page({
   onShareAppMessage: function () {
 
   },
+  gotoGrant: function(){
+    wx.navigateTo({
+      url: '/pages/index/index',
+    })
+  },
   viewDonateRule: function() {
     wx.navigateTo({
       url: '/pages/donate/rule?onlyview=true',

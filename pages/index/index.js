@@ -4,8 +4,6 @@ const app = getApp()
 
 Page({
   data: {
-    userInfo: {},
-    hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
     nextUrl: "/pages/books/index",
@@ -13,54 +11,85 @@ Page({
   },
   //事件处理函数
   onLoad: function (options) {
-    this.nextUrl = options.url
-    this.nextSwitchTab = options.switchTab
+    this.data.nextUrl = options.url
+    this.data.nextSwitchTab = options.switchTab
 
-    if (app.globalData.userInfo) {
-      console.log("read from globalData")
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+    //从storage里读取unioinid
+    var ui = wx.getStorageSync("userInfo")
+    if (ui) {
+      //已经有数据了，则不需要登录了
+      console.log("read userInfo from storage")
+      wx.navigateBack({
+        delta: 1
       })
-      this.nextAction()
-      
-    } else if (this.data.canIUse){
-      console.log("use open-type");
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-        this.nextAction()
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      console.log("no open-type, use getUserInfo")
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-          this.nextAction()
-        }
-      })
+      return
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  limerLogin: function(){
+    
+    wx.login({
+      success: (res) => {
+        wx.request({
+          url: 'https://www.limer.cn/json/code2Session',
+          data: {
+            code: res.code
+          },
+          success: (res2) => {
+            //console.log("code2Session return")
+            //console.log(res2)
+            this.decryptData(res2.data.session_key)
+          }
+        })
+      }
     })
-    this.nextAction()
   },
+  decryptData: function (sessionKey) {
+
+    // 获取用户信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res2 => {
+              //console.log("getUserInfo return:")
+              //console.log(res2)
+
+              // 可以将 res 发送给后台解码出 unionId
+              wx.request({
+                url: 'https://www.limer.cn/json/decryptUserInfo',
+                data: {
+                  encryptedData: res2.encryptedData,
+                  sessionKey: sessionKey,
+                  iv: res2.iv
+                },
+                success: (res3) => {
+                  //console.log("decryptUserInfo return:")
+                  //console.log(res3)
+                  this.globalData.userInfo = res3.data
+                  wx.setStorageSync('userInfo', res3.data)
+
+                  // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                  // 所以此处加入 callback 以防止这种情况
+                  if (this.userInfoReadyCallback) {
+                    this.userInfoReadyCallback(res)
+                  }
+
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }
+              })
+
+            }
+          })
+        }
+      }
+    })
+  },
+
   nextAction: function() {
-    if (this.nextSwitchTab) {
+    if (this.data.nextSwitchTab) {
       wx.switchTab({
         url: this.data.nextUrl,
       })

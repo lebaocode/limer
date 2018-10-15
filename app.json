@@ -35,7 +35,7 @@
         "pagePath": "pages/donate/scanguide",
         "iconPath": "pages/images/scan-barcode-gray.png",
         "selectedIconPath": "pages/images/scan-barcode-green.png",
-        "text": "捐书"
+        "text": "共享"
       },
       {
         "pagePath": "pages/my/index",

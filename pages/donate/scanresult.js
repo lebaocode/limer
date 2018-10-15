@@ -1,4 +1,6 @@
 // pages/donate/scanresult.js
+const app = getApp()
+
 Page({
 
   /**
@@ -22,8 +24,10 @@ Page({
 
     var paraIsbn = options.isbn;
     if (paraIsbn) {
-      this.getBookInfo(paraIsbn);
-    } 
+      this.checkBookInfo(paraIsbn);
+    } else {
+      this.confirmSetData()
+    }
 
     
   },
@@ -109,18 +113,40 @@ Page({
     })
 
   },
-  getBookInfo: function (isbn) {
-    console.log("getBookInfo: " + isbn);
+  checkBookInfo: function (isbn) {
+    console.log("checkBookInfo: " + isbn);
+
+    //先判断该书是否已捐赠过
     wx.request({
-      url: 'https://www.limer.cn/json/getBookDetailByIsbn',
+      url: 'https://www.limer.cn/json/isBookDonated',
+      data: {
+        'isbn': isbn,
+        'unionId': wx.getStorageSync("userInfo").unionId
+      },
+      success: (res) => {
+        if (res.data) {
+          var isDonated = res.data.data.donated;
+          if (isDonated) {
+            wx.showToast({
+              title: '此书已共享过了哦~',
+              icon: 'none',
+            })
+            this.confirmSetData();
+          } else {
+            this.getBookInfo(isbn)
+          }
+        }
+      }
+    })
+  },
+  getBookInfo: function(isbn) {
+    wx.request({
+      url: 'https://www.limer.cn/json/getBookDetail',
       data: {
         'isbn': isbn
       },
-      header: {
-        'content-type': "apllication/json"
-      },
       success: (res) => {
-        var curBook = res.data;
+        var curBook = res.data.data;
         if (curBook) {
           var found = false;
           for (var i = 0; i < this.data.bookList.length; i++) {
@@ -143,50 +169,6 @@ Page({
         }
       }
     })
-
-    
-    
-  },
-  mockBookList: function() {
-    console.log("mocked")
-    this.data.bookList = [
-      {
-        "cover": "/pages/images/bookcover-default-gray.png",
-        "title": "高效学习3",
-        "author": "[日] 和田秀树，蓝朔 著",
-        "isbn": "3",
-        "price": "￥50.00",
-        "score": 50
-      },
-      {
-        "cover": "/pages/images/bookcover-default-gray.png",
-        "title": "高效学习2",
-        "author": "[日] 和田秀树，蓝朔 著",
-        "isbn": "2",
-        "price": "￥40.00",
-        "score": 40
-      },
-      {
-        "cover": "/pages/images/bookcover-default-gray.png",
-        "title": "高效学习1",
-        "author": "[日] 和田秀树，蓝朔 著",
-        "isbn": "1",
-        "price": "￥30.00",
-        "score": 30
-      },
-      {
-        "cover": "/pages/images/bookcover-default-gray.png",
-        "title": "高效学习0",
-        "author": "[日] 和田秀树，蓝朔 著",
-        "isbn": "0",
-        "price": "￥20.00",
-        "score": 20
-      }
-      
-      
-    ];
-
-    
   },
   continueScan: function() {
     wx.navigateBack({
@@ -194,15 +176,41 @@ Page({
     })
   },
   submitDonate: function() {
+    var isbnArr = [];
+    for (var i = 0; i < this.data.bookList.length; i++) {
+      isbnArr.push(this.data.bookList[i].isbn13);
+    }
+    
+    if (!app.globalData.userInfo) {
+      wx.navigateTo({
+        url: '/pages/index/index',
+      })
+      return;
+    }
+
+    var unionId = app.globalData.userInfo.unionId
     wx.request({
-      url: '/json/submitDonate',
+      url: 'https://www.limer.cn/json/submitDonate',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      data: {
+        isbn_arr: isbnArr,
+        unionId: unionId,
+        ue: 'ISO-8859-1'
+      },
       success: (res) => {
+        wx.setStorageSync(this.data.donateBookListStorageName, []);
         wx.navigateTo({
           url: '/pages/donate/share',
         })
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '非常抱歉，共享失败！您可以稍后再试~',
+          icon: 'none'
+        })
       }
     })
-
-    
   }
 })

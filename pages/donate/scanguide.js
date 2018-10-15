@@ -6,17 +6,35 @@ Page({
    */
   data: {
     storageKeyAgreeRule: "hasAgreeDonateRule",
+    storageKeyDonateBookList: "donatebooklist",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var userInfo = wx.getStorageSync("userInfo")
+    if (!userInfo) {
+      wx.redirectTo({
+        url: '/pages/index/index?switchTab=true&url=/pages/donate/scanguide'
+      })
+      return
+    }
+
     var res = wx.getStorageSync(this.data.storageKeyAgreeRule)
     if (!res || res.data != "agree") {
       wx.navigateTo({
         url: '/pages/donate/rule',
       })
+      return
+    }
+
+    var donatedBooks = wx.getStorageSync(this.data.storageKeyDonateBookList)
+    if (donatedBooks && donatedBooks.length > 0) {
+      wx.navigateTo({
+        url: '/pages/donate/scanresult',
+      })
+      return
     }
   },
 
@@ -75,8 +93,9 @@ Page({
       "scanType": ['barcode'],
       "success": (res) =>  {
         wx.navigateTo({
-          url: '/pages/donate/scanresult?isbn='+res.result
+          url: '/pages/donate/scanresult?isbn=' + res.result
         })
+
       },
       "fail": (res) => {
         console.log(res);

@@ -1,10 +1,8 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <block wx:if="{{!hasUserInfo && canIUse}}">
       <text class="logo-text">青柠书友会</text>
       <image src="../images/limer-logo.jpg" mode="widthFix" class="logo"></image>
-      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="userinfo-button"> 登录 </button>
-    </block>
+      <button open-type="getUserInfo" bindgetuserinfo="limerLogin" class="userinfo-button"> 登录 </button>
   </view>
 </view>

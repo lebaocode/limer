@@ -6,7 +6,7 @@
   <view class="user-data">
     <view class="data-info">
       <view class="data-digit">{{userDonateNum}}</view>
-      <view class="data-name">已捐赠</view>
+      <view class="data-name">已共享</view>
     </view>
     <view class="data-info">
       <view class="data-digit">{{userBorrowNum}}</view>
@@ -22,17 +22,12 @@
 <view class="section">
   <view class="line line-border-bottom">
     <image class="icon-left" src="/pages/images/book-icon.png" />
-    <text class="line-text">我的借阅</text>
+    <text class="line-text">我借的书</text>
     <image class="icon-right" src="/pages/images/arrow-right.png" />
   </view>
   <view class="line line-border-bottom">
     <image class="icon-left" src="/pages/images/book-icon.png" />
-    <text class="line-text">我的预约</text>
-    <image class="icon-right" src="/pages/images/arrow-right.png" />
-  </view>
-  <view class="line line-border-bottom">
-    <image class="icon-left" src="/pages/images/book-icon.png" />
-    <text class="line-text">我的捐赠</text>
+    <text class="line-text">我共享的书</text>
     <image class="icon-right" src="/pages/images/arrow-right.png" />
   </view>
 </view>
@@ -50,12 +45,16 @@
   </view>
   <view class="line line-border-bottom" bindtap="viewDonateRule">
     <image class="icon-left" src="/pages/images/score.png" />
-    <text class="line-text">捐书规则</text>
+    <text class="line-text">共享规则</text>
     <image class="icon-right" src="/pages/images/arrow-right.png" />
   </view>
 </view>
 
 <view class="section section-margin-top">
+  <view class="line line-border-bottom" bindtap="gotoGrant">
+    <image class="icon-left" src="/pages/images/clear.png" />
+    <text class="line-text">重新授权</text>
+  </view>
   <view class="line line-border-bottom" bindtap="clearStorage">
     <image class="icon-left" src="/pages/images/clear.png" />
     <text class="line-text">清除缓存数据</text>

@@ -12,16 +12,23 @@
 }
 
 .book-cover {
-  margin-right: 10rpx;
+  margin-right: 30rpx;
   margin-top: 10rpx;
 }
 
 .book-cover-img {
-  width: 300rpx;
+  width: 225rpx;
   height: 300rpx;
 }
 
 .book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.book-info-top {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -38,11 +45,24 @@
 }
 
 .book-author {
-  font-size: 30rpx;
+  font-size: 26rpx;
   color: #999;
-  line-height: 50rpx;
+  line-height: 40rpx;
   width: 100%;
-  margin-top: 15rpx;
+  margin-top: 5rpx;
+}
+
+
+.book-price {
+  font-size: 26rpx;
+  color: red;
+  line-height: 40rpx;
+}
+
+.mid-line {
+  text-decoration: line-through;
+  color:#999;
+  margin-left: 20rpx;
 }
 
 .book-detail {
@@ -96,10 +116,11 @@
 .bottom-button {
   box-sizing: border-box;
   padding: 0rpx 0rpx 0rpx 0rpx;
+  width: 100%;
 }
 
 .btn-style{
-  width: 250rpx;
+  width: 100%;
   font-size: 35rpx;
   line-height: 110rpx;
   height: 110rpx;
@@ -113,13 +134,13 @@
 }
 
 .btn-inactive-style{
-  width: 250rpx;
+  width: 100%;
   font-size: 35rpx;
   line-height: 110rpx;
   height: 110rpx;
   border-radius: 0;
   color: #AAA;
-  background-color: #E0E0E0;
+  background-color: #FEFEFE;
 }
 
 .btn-inactive-style::after {

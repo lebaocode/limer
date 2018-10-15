@@ -5,6 +5,16 @@
   color: transparent;
 }
 
+.top-bar {
+  height: 90rpx;
+  width: 100%;
+}
+
+.book-area{
+  height: calc(100vh - 90rpx);
+  width: 100%;
+}
+
 .cat-nav {
   width: 100%;
   height: 100rpx;
@@ -62,12 +72,12 @@
 }
 
 .book-cover {
-  margin-right: 10rpx;
-  margin-top: 10rpx;
+  margin-right: 30rpx;
+  margin-top: 0rpx;
 }
 
 .book-cover-img {
-  width: 200rpx;
+  width: 150rpx;
   height: 200rpx;
 }
 
@@ -75,6 +85,7 @@
   font-size: 35rpx;
   color: #000;
   line-height: 55rpx;
+  height: 55rpx;
   overflow: hidden;
   width: 100%;
   box-sizing: border-box;
@@ -85,14 +96,30 @@
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
+  
 }
 
 .book-author {
-  font-size: 30rpx;
+  font-size: 26rpx;
   color: #999;
-  line-height: 50rpx;
-  width: 100%;
+  line-height: 40rpx;
+  height: 40rpx;
+  width: calc(100vw - 280rpx);
+  overflow: hidden;
   margin-top: 5rpx;
+}
+
+.book-price {
+  font-size: 26rpx;
+  color: red;
+  line-height: 40rpx;
+  margin-top: 65rpx;
+}
+
+.mid-line {
+  text-decoration: line-through;
+  color:#999;
+  margin-left: 20rpx;
 }
 
 .hint-nobook {
