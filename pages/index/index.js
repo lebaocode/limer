@@ -13,17 +13,6 @@ Page({
   onLoad: function (options) {
     this.data.nextUrl = options.url
     this.data.nextSwitchTab = options.switchTab
-
-    //从storage里读取unioinid
-    var ui = wx.getStorageSync("userInfo")
-    if (ui) {
-      //已经有数据了，则不需要登录了
-      console.log("read userInfo from storage")
-      wx.navigateBack({
-        delta: 1
-      })
-      return
-    }
   },
   limerLogin: function(){
     
@@ -76,7 +65,7 @@ Page({
                   }
 
                   wx.navigateBack({
-                    delta: 1
+                    delta: 1,
                   })
                 }
               })

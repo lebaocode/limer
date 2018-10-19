@@ -1,0 +1,17 @@
+<!--pages/booklist/detail.wxml-->
+<scroll-view class="bg" scroll-y>
+  <view class="booklist-info">
+    <view class="booklist-title">{{booklist.title}}</view>
+    <view class="booklist-desc">{{booklist.desc}}</view>
+  </view>
+
+  <view id="bookItem{{idx}}" class="book-item" wx:for="{{booklist.books}}" wx:for-index="idx" wx:for-item="book" wx:key="isbn" data-isbn="{{book.isbn13}}" bindtap="gotoBookDetail">
+    <view class="book-cover"><image class="book-cover-img" src="{{book.coverUrl}}" /></view>
+    <view class="book-info">
+      <view class="book-title">{{book.title}}<text class="sign">新书</text></view>
+      <view class="book-author">{{book.author}}</view>
+      <view class="book-author" wx:if="{{book.rating > '5'}}">豆瓣评分：{{book.rating}}</view>
+     
+    </view>
+  </view>
+</scroll-view>

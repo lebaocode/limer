@@ -5,41 +5,30 @@
   align-items: center;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
 .userinfo-button {
   background-color: #AFCB21;
   color: #FFF;
-  font-size: 40rpx;
+  font-size: 35rpx;
   position: absolute;
-  top: 60%;
+  bottom: 300rpx;
   left: 25%;
   width: 50%;
-  margin-top: 20rpx;
+  border-radius: 0;
 }
-
-.usermotto {
-  margin-top: 200px;
+.userinfo-button::after {
+  border-width: 0;
 }
 
 .logo-text {
   font-size: 40rpx;
   color: #000;
   position: absolute;
-  top: 50%;
+  top: 450rpx;
 }
 
 .logo {
-  width: 50%;
+  width: 300rpx;
+  height: 300rpx;
   position: absolute;
   top: 100rpx;
 }

@@ -1,31 +1,25 @@
 <!--pages/books/rule.wxml-->
-<view class="para">
+<scroll-view class="para" scroll-y>
   <view class="title">借书规则</view>
-  <scroll-view class="content" scroll-y>
+  <view class="content">
     <text>
     在借书之前，请确认您同意我们的借书规则：
 
-    1. 您需要缴纳100元押金才能借书。一周后押金可随时申请取出。
+    1. 您需要缴纳100元押金才能借书。每次归还图书后押金即返还。
 
-    2. 每次只能借阅1本书。还回后才能借阅另一本。
+    2. 每次借阅最多10本书，最少不低于30元。全部还回后才能进行下次借阅。
 
-    3. 每本书只能借阅最多1个月。超期后，当未有新借书需求时，该书会继续保留在您那。但当其他用户有借书需求时，需要您配合快递上门取书。如果快递通知上门取书后，超出1周仍未把书交给快递，则扣除书费原价对应押金，且此书不再追回，由您永久持有。
+    3. 每本书只能借阅最多1个月。1个月后，快递会上门取书。如果超期仍未归还，则每天按1元收取滞纳金，直至扣完押金为止。且该账号以后无法再借书。
 
-    4. 从快递手上拿到书时，请确认书籍是否为九成新。如果认为不符合，则请快递退回书籍。如果您签收了书籍，则默认为您同意书籍为九成新。九成新是指，无大片字迹、涂画，无污渍，未被水浸过。
-
-    5. 借阅过程中，请保持书籍为九成新。
-
-    6. 如果归还书籍时，已不符合九成新标准，快递员将不回收该书，并扣除书费原价对应押金作为书籍补偿。快递员如果签收该书，则认为符合九成新标准。
-
-    7. 每次借阅书籍，会消耗书币。书币可通过参与系统活动赚取。详见书币规则。
+    4. 借阅过程中，请保持书籍为九成新。如果有折损，则客服会致电给您，告知扣除押金费用。
     </text>
-  </scroll-view>
-</view>
-
-<view class="bottom-area" style="{{hiddenStyle}}">
-  <checkbox-group bindchange="checkboxChange" class="license">
-    <checkbox value="agree" /><text id="license-text" class="license-text" style="color:{{licenseCurColor}}">我确认已查看用户协议</text>
-  </checkbox-group>
- 
-  <button bindtap="btnClick" class="btn-style" style="color:{{btnCurColor}};background-color:{{btnCurBgColor}}">我同意</button>
   </view>
+
+  <view class="bottom-area" style="{{hiddenStyle}}">
+    <checkbox-group bindchange="checkboxChange" class="license">
+      <checkbox value="agree" /><text id="license-text" class="license-text" style="color:{{licenseCurColor}}">我确认已查看用户协议</text>
+    </checkbox-group>
+  
+    <button bindtap="btnClick" class="btn-style" style="color:{{btnCurColor}};background-color:{{btnCurBgColor}}">我同意</button>
+  </view>
+</scroll-view>

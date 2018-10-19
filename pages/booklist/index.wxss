@@ -1,0 +1,67 @@
+/* pages/booklist/index.wxss */
+.bg {
+  background-color: #EEEEEE;
+}
+
+.banner{
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.banner-area {
+  width: 100%;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}
+
+.column-header {
+  font-size: 35rpx;
+  line-height: 80rpx;
+  margin-left:50rpx;
+}
+
+.booklist-item{
+  box-sizing: border-box;
+  padding: 30rpx 50rpx;
+  background-color: #FFF;
+  margin-bottom: 30rpx;
+}
+
+.item-title {
+  font-size: 35rpx;
+  font-weight: bold;
+  line-height: 75rpx;
+  box-sizing: border-box;
+}
+.sign-line {
+  box-sizing: border-box;
+  padding: 0rpx 0rpx 10rpx;
+}
+.sign {
+  font-weight: normal;
+  font-size: 20rpx;
+  color: red;
+  border: 1px solid red;
+  margin-left: 20rpx;
+  padding: 5rpx;
+}
+
+.item-subtitle {
+  font-size: 30rpx;
+  line-height: 48rpx;
+}
+
+.item-books {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 30rpx;
+  width: 100%;
+}
+
+.item-bookcover {
+  margin-right: 30rpx;
+  height: calc((100vw - 160rpx) * 0.44);
+  width: calc((100vw - 160rpx) * 0.33);
+  max-width: 400rpx;
+}

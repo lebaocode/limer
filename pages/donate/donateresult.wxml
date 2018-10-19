@@ -1,0 +1,15 @@
+<!--pages/donate/donateresult.wxml-->
+<view class="container">
+  <view class="hint-line">
+    <view>
+      <image class="icon" src="/pages/images/yes-gray.png" />
+      <text class="hint-text">共享成功</text>
+    </view>
+  </view>
+  <view class="action-line">
+    <view>
+      <text class="link" bindtap="gotoBorrow">去借书</text>
+      <text class="link second-link" bindtap="gotoScan">继续共享</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+<!--pages/booklist/index.wxml-->
+<scroll-view class="bg" scroll-y>
+  
+  <view class="banner-area"><image class="banner" mode="widthFix" src="{{bannerUrl}}" /></view>
+  <view id="bookList{{idx}}" class="booklist-item" wx:for="{{bookLists}}" wx:for-index="idx" wx:for-item="item" wx:key="id" data-id="{{item.id}}" bindtap="gotoBookList">
+   
+    <view class="item-title">{{item.title}}<text class="sign">新书抢先看</text> <text class="sign">伙伴一起看</text></view>
+    <view class="item-subtitle">{{item.subTitle}}</view>
+    <view class="item-books">
+      <view wx:if="{{bi < 3}}" wx:for="{{item.books}}" wx:for-item="b" wx:for-index="bi" wx:key="isbn13">
+        <image class="item-bookcover" src="{{b.coverUrl}}" />
+      </view>
+    </view>
+  </view>
+</scroll-view>
+

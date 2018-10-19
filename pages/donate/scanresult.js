@@ -202,7 +202,7 @@ Page({
       success: (res) => {
         wx.setStorageSync(this.data.donateBookListStorageName, []);
         wx.navigateTo({
-          url: '/pages/donate/share',
+          url: '/pages/donate/donateresult',
         })
       },
       fail: (res) => {
