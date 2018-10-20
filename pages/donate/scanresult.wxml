@@ -7,7 +7,7 @@
        <view class="book-info">
         <view class="book-first-line">
           <view class="book-title">{{book.title}}</view>
-          <view class="book-action" ><image class="btn-delete-item" src="/pages/images/delete-gray.png" data-isbn="{{book.isbn13}}" bindtap="deleteItem" /></view>
+          <view class="book-action" ><image class="btn-delete-item" src="https://storage.limer.cn/images/delete-gray.png" data-isbn="{{book.isbn13}}" bindtap="deleteItem" /></view>
         </view>
         <view class="book-author">{{book.author}}</view>
         <view class="book-lastline">

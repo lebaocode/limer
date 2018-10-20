@@ -6,7 +6,7 @@
   </view>
 
   <view id="bookItem{{idx}}" class="book-item" wx:for="{{booklist.books}}" wx:for-index="idx" wx:for-item="book" wx:key="isbn" data-isbn="{{book.isbn13}}" bindtap="gotoBookDetail">
-    <view class="book-cover"><image class="book-cover-img" src="{{book.coverUrl}}" /></view>
+    <view class="book-cover"><image lazy-load="true" class="book-cover-img" src="{{book.coverUrl}}" /></view>
     <view class="book-info">
       <view class="book-title">{{book.title}}<text class="sign">新书</text></view>
       <view class="book-author">{{book.author}}</view>

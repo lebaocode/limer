@@ -1,32 +1,18 @@
-// pages/booklist/detail.js
+// pages/activity/newbook.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bannerUrl: 'https://storage.limer.cn/images/banner_xinshu_flat.jpg',
-    booklist: {}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.request({
-      url: 'https://www.limer.cn/json/getBookListDetail',
-      data: {
-        id: options.id || '',
-      },
-      success: (res) => {
-        console.log(res)
-        if (res.data && res.data.success) {
-          this.setData({
-            booklist: res.data.data
-          })
-        }
-      }
-    })
+
   },
 
   /**
@@ -76,12 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  gotoBookDetail: function (e) {
-    var isbn = e.currentTarget.dataset.isbn;
-    console.log("dataset isbn:" + isbn)
-    wx.navigateTo({
-      url: '/pages/books/detail?isbn=' + isbn,
-    })
   }
 })

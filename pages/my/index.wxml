@@ -33,11 +33,11 @@
 </view>
 
 <view class="section section-margin-top">
-  <view class="line line-border-bottom">
+  <!-- <view class="line line-border-bottom">
     <image class="icon-left" src="/pages/images/score.png" />
     <text class="line-text">书币奖惩规则</text>
     <image class="icon-right" src="/pages/images/arrow-right.png" />
-  </view>
+  </view> -->
   <view class="line line-border-bottom" bindtap="viewBorrowRule">
     <image class="icon-left" src="/pages/images/score.png" />
     <text class="line-text">借书规则</text>

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bannerUrl: '/pages/images/banner_xinshu.jpg',
+    bannerUrl: 'https://storage.limer.cn/images/banner_xinshu_flat.jpg',
     bookLists: []
   },
 
@@ -77,6 +77,11 @@ Page({
   gotoBookList: function(e) {
     wx.navigateTo({
       url: '/pages/booklist/detail?id=' + e.currentTarget.dataset.id,
+    })
+  },
+  gotoActivity: function () {
+    wx.navigateTo({
+      url: '/pages/activity/newbook',
     })
   }
 })

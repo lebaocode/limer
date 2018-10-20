@@ -8,8 +8,8 @@ Page({
    */
   data: {
     sharePic: "",
-    qrCodeImgUrl: "/pages/images/qrcode-sample.png",
-    checkedImgUrl: "/pages/images/checked.png",
+    qrCodeImgUrl: "https://storage.limer.cn/images/qrcode-sample.png",
+    checkedImgUrl: "https://storage.limer.cn/images/checked.png",
     maskDisplay: "block",
     shareDisplay: "flex"
   },
@@ -29,9 +29,9 @@ Page({
       totalNum: 108,
       title: "藏书大家",
       recentBookImgUrl: [
-        "/pages/images/bookcover-default.png",
-        "/pages/images/bookcover-default.png",
-        "/pages/images/bookcover-default.png"
+        "https://storage.limer.cn/images/bookcover-default.png",
+        "https://storage.limer.cn/images/bookcover-default.png",
+        "https://storage.limer.cn/images/bookcover-default.png"
       ],
       userLogo: app.globalData.userInfo.avatarUrl,
       userName: app.globalData.userInfo.nickName

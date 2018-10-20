@@ -2,7 +2,7 @@
 <view class="container">
   <view class="hint-line">
     <view>
-      <image class="icon" src="/pages/images/yes-gray.png" />
+      <image class="icon" src="https://storage.limer.cn/images/yes-gray.png" />
       <text class="hint-text">共享成功</text>
     </view>
   </view>

@@ -1,0 +1,8 @@
+<!--pages/activity/newbook.wxml-->
+<scroll-view scroll-y>
+  <image class="img" mode="widthFix" src="https://storage.limer.cn/images/banner_xinshu_flat.jpg" /> 
+  <image class="img" mode="widthFix" src="https://storage.limer.cn/images/activity0.jpg" /> 
+  <image class="img" lazy-load="true" mode="widthFix" src="https://storage.limer.cn/images/activity1.jpg" /> 
+  <image class="img" lazy-load="true" mode="widthFix" src="https://storage.limer.cn/images/activity2.jpg" />
+  <image class="img" lazy-load="true" mode="widthFix" src="https://storage.limer.cn/images/activity3.jpg" />
+</scroll-view>

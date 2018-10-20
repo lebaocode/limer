@@ -117,5 +117,10 @@ Page({
     wx.navigateTo({
       url: '/pages/books/cart?isbn=' + isbn,
     })
+  },
+  gotoActivity: function() {
+    wx.navigateTo({
+      url: '/pages/activity/newbook',
+    })
   }
 })
