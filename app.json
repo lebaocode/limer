@@ -16,7 +16,9 @@
     "pages/my/scorerule",
     "pages/booklist/detail",
     "pages/donate/donateresult",
-    "pages/activity/newbook"
+    "pages/activity/newbook",
+    "pages/booklist/recombook",
+    "pages/books/writecomment"
   ],
   "window": {
     "backgroundTextStyle": "light",

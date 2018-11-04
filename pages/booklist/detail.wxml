@@ -8,10 +8,16 @@
   <view id="bookItem{{idx}}" class="book-item" wx:for="{{booklist.books}}" wx:for-index="idx" wx:for-item="book" wx:key="isbn" data-isbn="{{book.isbn13}}" bindtap="gotoBookDetail">
     <view class="book-cover"><image lazy-load="true" class="book-cover-img" src="{{book.coverUrl}}" /></view>
     <view class="book-info">
-      <view class="book-title">{{book.title}}<text class="sign">新书</text></view>
+      <view class="book-title">{{book.title}}</view>
       <view class="book-author">{{book.author}}</view>
       <view class="book-author" wx:if="{{book.rating > '5'}}">豆瓣评分：{{book.rating}}</view>
-     
+      <view class="book-author"><text class="mr20" wx:if="{{book.commentNum > 0}}">{{book.commentNum}}书评</text><text class="mr20" wx:if="{{book.likeNum > 0}}">{{book.likeNum}}推荐</text></view>
     </view>
   </view>
 </scroll-view>
+
+<view class="bottombar">
+  <view class="bottom-button">
+    <button class="btn-style" bindtap="gotoRecommend">我也要推荐</button>
+  </view>
+</view>

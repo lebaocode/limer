@@ -12,6 +12,8 @@ Page({
 
     book: {},
     bookStatus: 2, //1可借阅 2可预约 3借阅中
+
+    comments: []
   },
 
   /**
@@ -20,6 +22,24 @@ Page({
   onLoad: function (options) {
     console.log(options.isbn)
     this.getBookDetail(options.isbn)
+
+    //get book comments
+    wx.request({
+      url: 'https://www.limer.cn/json/getBookComments',
+      data: {
+        isbn: options.isbn,
+        start: 0,
+        len: 5
+      },
+      success: (res) => {
+        console.log(res)
+        if (res && res.data && res.data.success){
+          this.setData({
+            comments: res.data.data
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -121,6 +141,11 @@ Page({
   gotoActivity: function() {
     wx.navigateTo({
       url: '/pages/activity/newbook',
+    })
+  },
+  gotoWriteComment: function() {
+    wx.navigateTo({
+      url: '/pages/books/writecomment?isbn=' + this.data.book.isbn13,
     })
   }
 })

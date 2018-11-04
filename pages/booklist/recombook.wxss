@@ -1,0 +1,59 @@
+/* pages/booklist/recombook.wxss */
+.bg {
+  background-color: #EEEEEE;
+  width: 100%;
+  height: calc(100vh);
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.view-isbn {
+  margin-top: 200rpx;
+  width: calc(100vw - 100rpx);
+  height: 110rpx;
+  background-color:#FFF;
+  box-sizing: border-box;
+}
+
+.view-isbn input {
+  width: calc(100vw - 200rpx);
+  line-height: 110rpx;
+  height: 110rpx;
+  font-size: 35rpx;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.view-scan {
+  position: absolute;
+  right: 70rpx;
+  top: 225rpx;
+}
+
+.scan-icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.btn-submit {
+  margin-top:50rpx;
+}
+
+.btn-style{
+  width: calc(100vw - 100rpx);
+  font-size: 35rpx;
+  line-height: 110rpx;
+  height: 110rpx;
+  border-radius: 0;
+  color: #FFF;
+  background-color: #AFCB21;
+}
+
+.btn-style::after {
+  border-width: 0;
+}
+
+
+

@@ -1,7 +1,4 @@
 /* pages/booklist/index.wxss */
-.bg {
-  background-color: #EEEEEE;
-}
 
 .banner{
   width: 100%;
@@ -10,7 +7,49 @@
 
 .banner-area {
   width: 100%;
-  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}
+
+
+.top-bar {
+  height: 90rpx;
+  width: 100%;
+}
+
+.booklist-area{
+  height: calc(100vh - 90rpx);
+  width: 100%;
+}
+
+.cat-nav {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 0rpx 50rpx 0rpx 30rpx;
+  white-space: nowrap;
+}
+
+.cat-item {
+  font-size: 35rpx;
+  line-height: 90rpx;
+  height: 90rpx;
+  margin: 0rpx 20rpx;
+  color: #000;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.cat-item-selected {
+  display: inline-block;
+  font-size: 35rpx;
+  line-height: 90rpx;
+  height: 90rpx;
+  margin: 0rpx 20rpx;
+  color: #AFCB21;
+  border-bottom: 1px solid #AFCB21;
   box-sizing: border-box;
 }
 
@@ -25,6 +64,18 @@
   padding: 30rpx 50rpx;
   background-color: #FFF;
   margin-bottom: 30rpx;
+  border-top: 1px solid #EEEEEE;
+}
+
+.column-title {
+  font-size: 35rpx;
+  line-height: 35rpx;
+  height: 35rpx;
+  color: #AFCB21;
+  border-left: 1px solid #AFCB21;
+  box-sizing: border-box;
+  margin: 50rpx 0rpx 50rpx 0rpx;
+  padding: 0rpx 50rpx 0rpx 20rpx;
 }
 
 .item-title {

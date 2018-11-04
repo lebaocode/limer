@@ -1,0 +1,14 @@
+<!--pages/books/writecomment.wxml-->
+<form bindsubmit="formSubmit">
+<view class="bg">
+  <view class="book-title">《{{bookTitle}}》</view>
+  <textarea class="input-area" placeholder="写下孩子读这本书时的场景和感受" auto-height="true" bindinput="setReason" bindinput="setReason" auto-focus="true" maxlength="10000"></textarea>
+</view>
+
+<view class="bottombar">
+  <view class="bottom-button">
+    <button class="btn-style" form-type="submit">提交</button>
+  </view>
+</view>
+
+</form>

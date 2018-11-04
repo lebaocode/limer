@@ -1,0 +1,58 @@
+/* pages/books/writecomment.wxss */
+.bg {
+  background-color: #FFF;
+  width: 100%;
+  height: calc(100vh);
+}
+
+.book-title {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 35rpx;
+  color: #999;
+  padding: 20rpx 50rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-area{
+  padding: 50rpx;
+  box-sizing: border-box;
+  font-size: 35rpx;
+  line-height: 55rpx;
+  width: 100%;
+  height: calc(100vh - 100rpx);
+}
+
+.bottombar {
+  position: fixed;
+  bottom: 0;
+  height: 110rpx;
+  width: 100%;
+  background-color: rgba(254, 254, 254, 0.97);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  border-top:1rpx solid #EEEEEE;
+}
+
+.bottom-button {
+  box-sizing: border-box;
+  padding: 0rpx 0rpx 0rpx 0rpx;
+  width: 100%;
+}
+
+.btn-style{
+  width: 100%;
+  font-size: 35rpx;
+  line-height: 110rpx;
+  height: 110rpx;
+  border-radius: 0;
+  color: #FFF;
+  background-color: #AFCB21;
+}
+
+.btn-style::after {
+  border-width: 0;
+}

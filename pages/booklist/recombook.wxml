@@ -1,0 +1,8 @@
+<!--pages/booklist/recombook.wxml-->
+<form bindsubmit="formSubmit">
+<view class="bg">
+  <view class="view-isbn"><input maxlength="13" type="number" placeholder="请输入推荐图书的ISBN" bindinput="setIsbn" /></view>
+  <view class="view-scan" bindtap="gotoScan"><image class="scan-icon" src="/pages/images/scan-barcode-gray.png" /></view>
+  <view class="btn-submit"><button form-type="submit" class="btn-style">下一步</button></view>
+</view>
+</form>
