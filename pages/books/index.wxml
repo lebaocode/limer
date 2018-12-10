@@ -15,7 +15,7 @@
     <view class="book-info">
       <view class="book-title">{{book.title}}</view>
       <view class="book-author">{{book.author}}</view>
-      <view class="book-price">月租￥{{book.limerFee}} <text class="mid-line">￥{{book.price}}</text></view>
+      <view class="book-price">原价￥{{book.price}}</view>
     </view>
   </view>
   </block>

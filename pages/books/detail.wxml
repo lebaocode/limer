@@ -8,7 +8,7 @@
         <view class="book-author">{{book.author}}</view>
         <view class="book-author">{{book.publisher}}</view>
       </view>
-      <view class="book-price">月租￥{{book.limerFee}} <text class="mid-line">￥{{book.price}}</text></view>
+      <view class="book-price">原价￥{{book.price}}</view>
     </view>
   </view>
 
@@ -32,12 +32,12 @@
         <view class="comment-header">
           <view class="comment-userlogo"><image src="{{cmt.userLogo}}" /></view>
           <view class="comment-userinfo">
-            <view class="comment-username">{{cmt.userName}}</view>
+            <view class="comment-username">{{cmt.userName}}{{cmt.childAge.length > 0 ? "（": ""}}{{cmt.childAge}}{{cmt.childAge.length > 0 ? ")": ""}}</view>
             <view class="comment-time">{{cmt.createTimeDisplay}}</view>
           </view>
           <view class="comment-likenum">赞{{cmt.likeNum}}</view>
         </view>
-        <view class="column-content">{{cmt.content}}</view>
+        <view class="column-content"><text>{{cmt.content}}</text></view>
       </view>
     </block>
   </view>
@@ -45,9 +45,12 @@
 
 
 <view class="bottombar">
+  <view class="bottom-text">共{{totalBorrowNum}}本，原价￥{{totalBorrowPrice}}</view>
   <view class="bottom-button">
-    <button class="btn-style" bindtap="gotoWriteComment">写点书评</button>
+    <button class="btn-style" bindtap="addToBasket">加入借阅篮</button>
     <!--
+
+    <button class="btn-style" bindtap="gotoWriteComment">写点书评</button>
     <button class="btn-style" bindtap="gotoActivity">新书抢先看 活动报名中</button>
     <button wx:if="{{book.status == 1}}" class="btn-style" bindtap="submitBorrow">我要借阅</button>
     <button wx:elif="{{book.status == 2}}" class="btn-inactive-style">已借完</button>

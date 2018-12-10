@@ -98,7 +98,7 @@ Page({
       wx.navigateTo({
         url: '/pages/index/index',
       })
-      return
+      
     } else {
 
       wx.navigateTo({

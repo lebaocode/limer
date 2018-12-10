@@ -7,20 +7,19 @@ Page({
   data: {
     catList: [],
     bookList: [],
-    curTag: "童书",
+    curTag: "3-6岁",
     curStart: 0,
     curLen: 20,
     loaded: false
   },
   getCatList: function() {
     return [
-      { "tag": "童书", "selected": true },
-      { "tag": "绘本",  "selected": false },
-      { "tag": "儿童文学",  "selected": false },
-      { "tag": "童话",  "selected": false },
+      { "tag": "3-6岁", "selected": true },
+      { "tag": "7-12岁",  "selected": false },
+      { "tag": "历史",  "selected": false },
       { "tag": "科普", "selected": false },
       { "tag": "传统文化", "selected": false },
-      { "tag": "教育", "selected": false }
+      { "tag": "性格成长", "selected": false }
     ]
   },
   /**

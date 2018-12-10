@@ -55,7 +55,7 @@
 
 .book-price {
   font-size: 26rpx;
-  color: red;
+  color: #999;
   line-height: 40rpx;
 }
 
@@ -109,14 +109,14 @@
   font-size: 30rpx;
   line-height: 110rpx;
   color: #999;
-  width: 100%;
+  width: 60%;
   text-align: center;
 }
 
 .bottom-button {
   box-sizing: border-box;
   padding: 0rpx 0rpx 0rpx 0rpx;
-  width: 100%;
+  width: 40%;
 }
 
 .btn-style{

@@ -21,17 +21,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var userInfo = app.globalData.userInfo
+    var userInfo = wx.getStorageSync('userInfo')
     if (userInfo) {
       this.setData({
         userLogo: userInfo.avatarUrl,
         userName: userInfo.nickName
       })
-    } else {
-      wx.redirectTo({
-        url: '/pages/index/index?switchTab=true&url=/pages/my/index',
-      })
-    }
+    } 
   },
 
   /**
@@ -115,5 +111,10 @@ Page({
       }
     })
     
+  },
+  gotoMember: function() {
+    wx.navigateTo({
+      url: '/pages/activity/memberindex',
+    })
   }
 })

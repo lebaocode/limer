@@ -12,6 +12,12 @@ Page({
 
     book: {},
     bookStatus: 2, //1可借阅 2可预约 3借阅中
+    hasChildInfo: false,
+
+    totalBorrowNum: 0,
+    totalBorrowPrice: "0.00", 
+    basketBooks: [],
+    singleBookNo: 0,
 
     comments: []
   },
@@ -23,13 +29,24 @@ Page({
     console.log(options.isbn)
     this.getBookDetail(options.isbn)
 
+    //获取当前借阅篮里的情况
+    if (wx.getStorageSync("basket")) {
+      this.setData({
+        totalBorrowNum: wx.getStorageSync("basket").totalBorrowNum,
+        totalBorrowPrice: wx.getStorageSync("basket").totalBorrowPrice,
+        basketBooks: wx.getStorageSync("basket").basketBooks
+      })
+    }
+
     //get book comments
     wx.request({
       url: 'https://www.limer.cn/json/getBookComments',
       data: {
         isbn: options.isbn,
         start: 0,
-        len: 5
+        len: 5,
+        unionId: wx.getStorageSync("userInfo").unionId,
+        openId: wx.getStorageSync("userInfo").openId,
       },
       success: (res) => {
         console.log(res)
@@ -40,6 +57,92 @@ Page({
         }
       }
     })
+  },
+  addToBasket: function() {
+    var basketBooks = []
+    var totalBorrowPrice = 0
+    var totalBorrowNum = 0
+    if (wx.getStorageSync("basket")) {
+      totalBorrowNum = wx.getStorageSync("basket").totalBorrowNum
+      totalBorrowPrice = wx.getStorageSync("basket").totalBorrowPrice
+      basketBooks = wx.getStorageSync("basket").basketBooks
+    }
+
+    var exists = false
+    for (var i = 0; i < basketBooks.length; i++) {
+      var s = basketBooks[i].isbn13 + "_" + basketBooks[i].singleBookNo
+      if (s == (this.data.book.isbn13 + "_" + this.data.book.singleBookNo)) {
+        exists = true
+        break
+      }
+    }
+
+    if (exists) {
+      wx.showToast({
+        title: '此本书已加入过了哦~',
+        icon: 'none'
+      })
+      return
+    }
+
+    var curPrice = Number(this.data.book.price)
+    if (totalBorrowPrice + curPrice > 200) {
+      wx.showToast({
+        title: '借书总定价不可超过200元哦~',
+        icon: 'none'
+      })
+      return
+    }
+
+    if (totalBorrowNum > 9) {
+      wx.showToast({
+        title: '借书不可超过10本哦~',
+        icon: 'none'
+      })
+      return
+    }
+
+    wx.request({
+      url: 'https://www.limer.cn/json/preBorrowOneBook',
+      data: {
+        'isbn': this.data.book.isbn13,
+        'unionId': wx.getStorageSync("userInfo").unionId,
+        'openId': wx.getStorageSync("userInfo").openId,
+      },
+      success: (res) => {
+        if (res.data.success){
+          this.data.book.limerBookId = res.data.data.limerBookId
+
+          totalBorrowNum = totalBorrowNum + 1
+          totalBorrowPrice = totalBorrowPrice + curPrice
+          basketBooks.push(this.data.book)
+
+          wx.setStorageSync("basket", {
+            totalBorrowNum: totalBorrowNum,
+            totalBorrowPrice: totalBorrowPrice,
+            basketBooks: basketBooks
+          })
+
+          this.setData({
+            totalBorrowNum: totalBorrowNum,
+            totalBorrowPrice: totalBorrowPrice,
+            basketBooks: basketBooks
+          })
+
+          wx.showToast({
+            title: '加入成功！',
+            icon: 'none'
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none'
+          })
+        }
+      }
+    })
+
+    
   },
 
   /**
@@ -94,7 +197,9 @@ Page({
     wx.request({
       url: 'https://www.limer.cn/json/getBookDetail',
       data: {
-        isbn: isbn
+        isbn: isbn,
+        unionId: wx.getStorageSync("userInfo").unionId,
+        openId: wx.getStorageSync("userInfo").openId,
       },
       success: (res) => {
         if (res.data) {
@@ -108,7 +213,8 @@ Page({
             book.status = book.statusDesc
 
             this.setData({
-              book: book
+              book: book,
+              hasChildInfo: book.hasChildInfo || false
             });
           }else {
             wx.showToast({
@@ -144,8 +250,16 @@ Page({
     })
   },
   gotoWriteComment: function() {
-    wx.navigateTo({
-      url: '/pages/books/writecomment?isbn=' + this.data.book.isbn13,
-    })
+    if (this.data.hasChildInfo) {
+      wx.navigateTo({
+        url: '/pages/books/writecomment?isbn=' + this.data.book.isbn13,
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/books/addchild?redirectTo=' + encodeURIComponent('/pages/books/writecomment?isbn=' + this.data.book.isbn13),
+      })
+    }
+
+    
   }
 })

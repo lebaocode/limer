@@ -111,7 +111,7 @@
 
 .book-price {
   font-size: 26rpx;
-  color: red;
+  color: #999;
   line-height: 40rpx;
   margin-top: 65rpx;
 }

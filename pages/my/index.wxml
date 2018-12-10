@@ -20,6 +20,11 @@
 </view>
 
 <view class="section">
+  <view class="line line-border-bottom" bindtap="gotoMember">
+    <image class="icon-left" src="/pages/images/book-icon.png" />
+    <text class="line-text">加入会员</text>
+    <image class="icon-right" src="/pages/images/arrow-right.png" />
+  </view>
   <view class="line line-border-bottom">
     <image class="icon-left" src="/pages/images/book-icon.png" />
     <text class="line-text">我借的书</text>

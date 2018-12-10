@@ -18,6 +18,6 @@
 
 <view class="bottombar">
   <view class="bottom-button">
-    <button class="btn-style" bindtap="gotoRecommend">我也要推荐</button>
+    <button class="btn-style" bindtap="gotoRecommend">推荐童书到此书单</button>
   </view>
 </view>

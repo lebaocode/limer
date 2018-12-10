@@ -105,13 +105,11 @@ Page({
         "booklistId": this.data.booklistId,
         "content": this.data.inputReason,
         "ue": "ISO-8859-1",
-        'unionId': wx.getStorageSync("userInfo").unionId
+        'unionId': wx.getStorageSync("userInfo").unionId,
+        'openId': wx.getStorageSync("userInfo").openId,
       },
       success: (res) => {
-        wx.navigateBack({
-          delta: 2
-        })
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/books/detail?isbn='+ this.data.isbn,
         })
       }
