@@ -1,0 +1,33 @@
+<!--pages/activity/memberpay.wxml-->
+<view scroll-y class="bg">
+<view class="section section-margin-top">
+  <view class="line line-border-bottom">
+    <text class="line-text">收件人</text>
+    <text class="line-content">{{info.address}}
+    {{info.receiverName}} {{info.receiverMobile}}
+    </text>
+  </view>
+</view>
+
+<view class="section section-margin-top">
+  
+  <view class="line line-border-bottom">
+    <text class="line-text">支付方式</text>
+    <text class="line-content">微信支付</text>
+  </view>
+  <view class="line line-border-bottom">
+    <text class="line-text">支付金额</text>
+    <text class="line-content emp">{{info.mchDesc}}： {{info.realFee/100}}元
+    押金：{{info.depositFee/100}}元</text>
+  </view>
+</view>
+
+</view>
+
+<view class="bottombar">
+  <view class="bottom-text">总计：{{(info.realFee+info.depositFee)/100}}元</view>
+  <view class="bottom-button">
+    <button class="btn-style" bindtap="gotoPay" wx:if="{{allowPay}}">去支付</button>
+    <button class="btn-inactive-style" wx:else>请联系公众号“青柠童书馆”</button>
+  </view>
+</view>

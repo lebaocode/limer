@@ -1,0 +1,24 @@
+<!--pages/donate/basket.wxml-->
+<view class="whole-page">
+  <scroll-view scoll-y class="book-list">
+    <view id="bookItem{{idx}}" class="book-item" wx:for="{{bookList}}" wx:for-index="idx" wx:for-item="book" wx:key="isbn13">
+       <view class="book-cover"><image class="book-cover-img" src="{{book.coverUrl}}" /></view>
+       <view class="book-info">
+        <view class="book-first-line">
+          <view class="book-title">{{book.title}}</view>
+          <view class="book-action" ><image class="btn-delete-item" src="https://storage.limer.cn/images/delete-gray.png" data-limberbookid="{{book.limerBookId}}" bindtap="deleteItem" /></view>
+        </view>
+        <view class="book-lastline">
+          <view class="book-score">原价{{book.price}}</view>
+        </view>
+       </view>
+    </view>
+  </scroll-view>
+
+</view>
+<view class="bottombar">
+  <view class="bottom-text">总计：{{totalBorrowNum}}本书，原价￥{{totalBorrowPrice}}</view>
+  <view class="bottom-button">
+    <button class="btn-style" bindtap="submitBorrow">确认借阅</button>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+<!--pages/books/addchild.wxml-->
+<form bindsubmit="formSubmit">
+<view class="bg">
+  <view class="pre-hint">请填写以下信息：</view>
+  <view class="item-title">收件人名字：</view>
+  <view class="item-input"><input class="input-text" type="text" placeholder="" bindinput="setReceiverName" auto-focus="true" maxlength="200"></input></view>
+  <view class="item-title">手机号：</view>
+  <view class="item-input"><input class="input-text" type="number" placeholder="" bindinput="setMobile"  maxlength="20"></input></view>
+  <view class="item-title">所在地区：</view>
+  <view class="item-input"><picker class="picker-region" mode="region" bindchange="setRegion">{{region}}</picker></view>
+  <view class="item-title">详细地址：</view>
+  <view class="item-input"><input class="input-text" type="text" placeholder="" bindinput="setAddress" maxlength="200"></input></view>
+
+  <view class="item-title">孩子昵称：</view>
+  <view class="item-input"><input class="input-text" type="text" placeholder="" bindinput="setChildName" maxlength="100"></input></view>
+  <view class="item-title">孩子性别：</view>
+  <view class="item-input"><picker class="picker-sex" mode="selector" bindchange="setSex" range="{{sexArray}}">{{sexDesc}}</picker></view>
+  <view class="item-title">孩子生日：</view>
+  <view class="item-input"><picker class="picker-birthday" mode="date" start="2000-01-01" end="2018-12-31" fields="day" value="2015-01-01" bindchange="setBirthday" >{{birthday}}</picker></view>
+  <view class="item-title">您是孩子的：</view>
+  <view class="item-input"><picker class="picker-relation" mode="selector" bindchange="setRelation" range="{{relationArray}}">{{relationDesc}}</picker></view>
+</view>
+
+<view class="bottombar">
+  <view class="bottom-button">
+    <button class="btn-style" form-type="submit">提交</button>
+  </view>
+</view>
+
+</form>
