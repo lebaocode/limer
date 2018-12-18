@@ -65,7 +65,7 @@
 
 .line {
   height: 110rpx;
-  padding: 0rpx 30rpx 0rpx 50rpx;
+  padding: 0rpx 50rpx 0rpx 50rpx;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -86,12 +86,20 @@
   height: 25rpx;
 }
 
+.line-text-right {
+  font-size: 30rpx;
+  color: #000;
+  position: absolute;
+  right: 50rpx;
+  text-align: right;
+}
+
 .line-text {
   line-height: 110rpx;
   font-size: 30rpx;
   color: #000;
   margin-left: 20rpx;
-  width: calc(100vw - 165rpx)
+  width: calc(100vw - 175rpx)
 }
 
 .section-margin-top {

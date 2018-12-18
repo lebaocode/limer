@@ -151,3 +151,17 @@
 .btn-style::after {
   border-width: 0;
 }
+
+.btn-inactive-style{
+  width: 250rpx;
+  font-size: 35rpx;
+  line-height: 110rpx;
+  height: 110rpx;
+  border-radius: 0;
+  color: #AAA;
+  background-color: #FEFEFE;
+}
+
+.btn-inactive-style::after {
+  border-width: 0;
+}

@@ -1,20 +1,31 @@
-// pages/activity/memberindex.js
+// pages/my/myorder.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    orderList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title: '加载中...',
-      icon: 'none'
+    wx.request({
+      url: 'https://www.limer.cn/json/getMyOrders',
+      data: {
+        unionId: wx.getStorageSync("userInfo").unionId,
+        openId: wx.getStorageSync("userInfo").openId,
+      },
+      success: (res) => {
+        if (res.data && res.data.success) {
+          console.log(res.data.data)
+          this.setData({
+            orderList: res.data.data
+          })
+        }
+      }
     })
   },
 
@@ -22,7 +33,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.hideLoading()
+
   },
 
   /**
@@ -36,14 +47,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    wx.hideLoading()
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    wx.hideLoading()
+
   },
 
   /**
@@ -65,28 +76,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  joinMember: function() {
-   
-    wx.request({
-      url: 'https://www.limer.cn/json/isAddressFilled',
-      data: {
-        unionId: wx.getStorageSync("userInfo").unionId,
-        openId: wx.getStorageSync("userInfo").openId,
-      },
-      success: (res) => {
-        if (res.data.success && res.data.data.hasInfo) {
-          //进入支付页面
-          wx.navigateTo({
-            url: '/pages/activity/memberpay',
-          })
-        } else {
-          //没有信息，重新填写
-          wx.navigateTo({
-            url: '/pages/books/addchild?redirectTo=/pages/activity/memberpay',
-          })
-        }
-      }
-    })
   }
 })

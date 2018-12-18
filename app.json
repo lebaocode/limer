@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/activity/memberindex",
     "pages/index/index",
     "pages/books/index",
     "pages/donate/rule",
@@ -22,7 +23,8 @@
     "pages/booklist/index",
     "pages/books/basket",
     "pages/activity/memberpay",
-    "pages/activity/memberindex"
+    
+    "pages/my/myorder"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,22 +38,10 @@
     "color": "#ADA9A8",
     "list": [
       {
-        "pagePath": "pages/books/index",
+        "pagePath": "pages/activity/memberindex",
         "iconPath": "pages/images/book-gray.png",
         "selectedIconPath": "pages/images/book-green.png",
-        "text": "书库"
-      },
-      {
-        "pagePath": "pages/donate/scanguide",
-        "iconPath": "pages/images/scan-barcode-gray.png",
-        "selectedIconPath": "pages/images/scan-barcode-green.png",
-        "text": "共享"
-      },
-      {
-        "pagePath": "pages/books/basket",
-        "iconPath": "pages/images/basket-gray.png",
-        "selectedIconPath": "pages/images/basket-green.png",
-        "text": "借阅篮"
+        "text": "会员"
       },
       {
         "pagePath": "pages/my/index",

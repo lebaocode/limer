@@ -1,0 +1,25 @@
+<!--pages/my/myorder.wxml-->
+<scroll-view scroll-y class="bg">
+
+<view class="section section-margin-top" wx:for="{{orderList}}" wx:for-index="index"
+ wx:for-item="order" wx:key="mchTradeNo">
+  <view class="line">
+    <text class="line-text">订单时间：{{order.orderTime}}</text>
+  </view>
+  <view class="line">
+    <text class="line-text">订单名称：{{order.productDesc}}</text>
+  </view>
+  <view class="line">
+    <text class="line-text">订单金额：{{order.realFee/100}}元</text><text class="line-text-gray" wx:if="{{order.deposit > 0}}">（含押金：{{order.deposit/100}}元）</text>
+  </view>
+  <view class="line">
+    <text class="line-text">青柠订单编号：{{order.mchTradeNo}}</text>
+  </view>
+  <view class="line line-border-bottom">
+    <text class="line-text">微信订单编号：{{order.wxTradeNo}}</text>
+  </view>
+  
+</view>
+
+
+</scroll-view>

@@ -3,16 +3,16 @@
 <view class="bg">
   <view class="pre-hint">请填写以下信息：</view>
   <view class="item-title">收件人名字：</view>
-  <view class="item-input"><input class="input-text" type="text" placeholder="" bindinput="setReceiverName" auto-focus="true" maxlength="200"></input></view>
+  <view class="item-input"><input class="input-text" type="text" placeholder="" bindinput="setReceiverName" auto-focus="true" maxlength="200" value="{{receiverName}}"></input></view>
   <view class="item-title">手机号：</view>
-  <view class="item-input"><input class="input-text" type="number" placeholder="" bindinput="setMobile"  maxlength="20"></input></view>
+  <view class="item-input"><input class="input-text" type="number" placeholder="" bindinput="setMobile"  maxlength="20" value="{{receiverMobile}}"></input></view>
   <view class="item-title">所在地区：</view>
   <view class="item-input"><picker class="picker-region" mode="region" bindchange="setRegion">{{region}}</picker></view>
   <view class="item-title">详细地址：</view>
-  <view class="item-input"><input class="input-text" type="text" placeholder="" bindinput="setAddress" maxlength="200"></input></view>
+  <view class="item-input"><input class="input-text" type="text" placeholder="" bindinput="setAddress" maxlength="200" value="{{address}}"></input></view>
 
   <view class="item-title">孩子昵称：</view>
-  <view class="item-input"><input class="input-text" type="text" placeholder="" bindinput="setChildName" maxlength="100"></input></view>
+  <view class="item-input"><input class="input-text" type="text" placeholder="" bindinput="setChildName" maxlength="100" value="{{childName}}"></input></view>
   <view class="item-title">孩子性别：</view>
   <view class="item-input"><picker class="picker-sex" mode="selector" bindchange="setSex" range="{{sexArray}}">{{sexDesc}}</picker></view>
   <view class="item-title">孩子生日：</view>

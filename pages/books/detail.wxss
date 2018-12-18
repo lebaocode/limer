@@ -116,7 +116,7 @@
 .bottom-button {
   box-sizing: border-box;
   padding: 0rpx 0rpx 0rpx 0rpx;
-  width: 40%;
+  width: 100%;
 }
 
 .btn-style{

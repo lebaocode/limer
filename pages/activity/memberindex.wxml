@@ -1,16 +1,13 @@
 <!--pages/activity/memberindex.wxml-->
 <scroll-view scroll-y class="content">
   <image class="img" mode="widthFix" src="https://storage.limer.cn/images/member_banner.png" />
-  <image lazy-load="true" class="img" mode="widthFix" src="https://storage.limer.cn/images/member_intro1.png" />
+  <image class="img" mode="widthFix" src="https://storage.limer.cn/images/member_intro1.png" />
   <image lazy-load="true" class="img" mode="widthFix" src="https://storage.limer.cn/images/member_intro2.jpg" />
   <image lazy-load="true" class="img" mode="widthFix" src="https://storage.limer.cn/images/member_intro3.jpg" />
   <image lazy-load="true" class="img" mode="widthFix" src="https://storage.limer.cn/images/member_intro4.jpg" />
   <image lazy-load="true" class="img" mode="widthFix" src="https://storage.limer.cn/images/member_intro5.jpg" />
   <image lazy-load="true" class="img" mode="widthFix" src="https://storage.limer.cn/images/member_intro6.jpg" />
-</scroll-view>
-
-<view class="bottombar">
   <view class="bottom-button">
     <button class="btn-style" bindtap="joinMember">加入会员</button>
   </view>
-</view>
+</scroll-view>

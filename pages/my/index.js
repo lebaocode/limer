@@ -71,13 +71,6 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   gotoGrant: function(){
     wx.navigateTo({
       url: '/pages/index/index',
@@ -115,6 +108,11 @@ Page({
   gotoMember: function() {
     wx.navigateTo({
       url: '/pages/activity/memberindex',
+    })
+  },
+  gotoMyOrder: function() {
+    wx.navigateTo({
+      url: '/pages/my/myorder',
     })
   }
 })

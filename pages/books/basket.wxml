@@ -19,6 +19,6 @@
 <view class="bottombar">
   <view class="bottom-text">总计：{{totalBorrowNum}}本书，原价￥{{totalBorrowPrice}}</view>
   <view class="bottom-button">
-    <button class="btn-style" bindtap="submitBorrow">确认借阅</button>
+    <button class="{{totalBorrowNum > 0 ? 'btn-style' : 'btn-inactive-style'}}" bindtap="submitBorrow">确认借阅</button>
   </view>
 </view>

@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="userinfo">
-    <text class="logo-text">青柠书友会</text>
+    <text class="logo-text">青柠童书馆</text>
     <image src="../images/limer-logo.jpg" mode="widthFix" class="logo"></image>
     <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="userinfo-button"> 登录 </button>
 </view>

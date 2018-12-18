@@ -1,9 +1,10 @@
 <!--pages/activity/memberpay.wxml-->
 <view scroll-y class="bg">
 <view class="section section-margin-top">
-  <view class="line line-border-bottom">
-    <text class="line-text">收件人</text>
-    <text class="line-content">{{info.address}}
+  <view class="line line-border-bottom" bindtap="reFillAddress">
+    <text class="line-text">收件人信息</text>
+    <text class="line-content">{{info.region}}
+    {{info.address}}
     {{info.receiverName}} {{info.receiverMobile}}
     </text>
   </view>
@@ -28,6 +29,6 @@
   <view class="bottom-text">总计：{{(info.realFee+info.depositFee)/100}}元</view>
   <view class="bottom-button">
     <button class="btn-style" bindtap="gotoPay" wx:if="{{allowPay}}">去支付</button>
-    <button class="btn-inactive-style" wx:else>请联系公众号“青柠童书馆”</button>
+    <button class="btn-inactive-style" wx:else>暂不支持苹果</button>
   </view>
 </view>

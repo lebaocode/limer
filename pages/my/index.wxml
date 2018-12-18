@@ -3,6 +3,7 @@
 <view class="top-area">
   <view class="user-logo"><image src="{{userLogo}}" /></view>
   <view class="user-name">{{userName}}</view>
+  <!--
   <view class="user-data">
     <view class="data-info">
       <view class="data-digit">{{userDonateNum}}</view>
@@ -16,15 +17,21 @@
       <view class="data-digit">{{userScore}}</view>
       <view class="data-name">书币</view>
     </view>
-  </view>
+  </view>-->
 </view>
 
 <view class="section">
-  <view class="line line-border-bottom" bindtap="gotoMember">
+  <view class="line line-border-bottom" bindtap="gotoMyOrder">
     <image class="icon-left" src="/pages/images/book-icon.png" />
-    <text class="line-text">加入会员</text>
+    <text class="line-text">我的订单</text>
     <image class="icon-right" src="/pages/images/arrow-right.png" />
   </view>
+  <view class="line line-border-bottom">
+    <image class="icon-left" src="/pages/images/setting.png" />
+    <text class="line-text">当前版本</text>
+    <text class="line-text-right">v1.0.1</text>
+  </view>
+  <!--
   <view class="line line-border-bottom">
     <image class="icon-left" src="/pages/images/book-icon.png" />
     <text class="line-text">我借的书</text>
@@ -34,15 +41,16 @@
     <image class="icon-left" src="/pages/images/book-icon.png" />
     <text class="line-text">我共享的书</text>
     <image class="icon-right" src="/pages/images/arrow-right.png" />
-  </view>
+  </view> -->
 </view>
 
+<!--
 <view class="section section-margin-top">
-  <!-- <view class="line line-border-bottom">
+  <view class="line line-border-bottom">
     <image class="icon-left" src="/pages/images/score.png" />
     <text class="line-text">书币奖惩规则</text>
     <image class="icon-right" src="/pages/images/arrow-right.png" />
-  </view> -->
+  </view> 
   <view class="line line-border-bottom" bindtap="viewBorrowRule">
     <image class="icon-left" src="/pages/images/score.png" />
     <text class="line-text">借书规则</text>
@@ -70,4 +78,6 @@
     <image class="icon-right" src="/pages/images/arrow-right.png" />
   </view>
 </view>
+-->
+
 </scroll-view>

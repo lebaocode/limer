@@ -10,7 +10,7 @@ Page({
     sexArray: ['男', '女'],
     sexDesc: '男',
     region: '请选择',
-    mobile: '',
+    receiverMobile: '',
     address: '',
     receiverName: '',
     childName: '',
@@ -24,10 +24,44 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中...',
+    })
+
     var redirectTo = decodeURIComponent(options.redirectTo)
     console.log("redirectTo:" + redirectTo)
     this.setData({
       lastUrl : redirectTo || ''
+    })
+
+    wx.request({
+      url: 'https://www.limer.cn/json/getAddress',
+      data: {
+        'unionId': wx.getStorageSync("userInfo").unionId,
+        'openId': wx.getStorageSync("userInfo").openId,
+      },
+      success: (res) => {
+        if (res.data.success && res.data.data.hasInfo) {
+          this.setData({
+            birthday: res.data.data.birthday,
+            childName: res.data.data.childName,
+            relation: res.data.data.relation,
+            sex: res.data.data.sex,
+            address: res.data.data.address,
+            region: res.data.data.region,
+            receiverMobile: res.data.data.receiverMobile,
+            receiverName: res.data.data.receiverName,
+          })
+
+          this.setData({
+            sexDesc: this.data.sexArray[this.data.sex],
+          })
+
+          this.setData({
+            relationDesc: this.data.relationArray[this.data.relation],
+          })
+        }
+      }
     })
   },
 
@@ -35,7 +69,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.hideLoading()
   },
 
   /**
@@ -49,14 +83,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    wx.hideLoading()
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.hideLoading()
   },
 
   /**
@@ -94,7 +128,7 @@ Page({
   setMobile: function (e) {
 
     this.setData({
-      mobile: e.detail.value
+      receiverMobile: e.detail.value
     })
   },
   setAddress: function (e) {
@@ -140,7 +174,7 @@ Page({
       })
       return
     }
-    if (this.data.mobile.length == 0) {
+    if (this.data.receiverMobile.length == 0) {
       wx.showToast({
         title: '请填写手机号',
         icon: 'none'
@@ -184,11 +218,11 @@ Page({
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
       data: {
-        nickname: this.data.childName,
+        childName: this.data.childName,
         sex: this.data.sex,
         birthday: this.data.birthday,
         relation: this.data.relation,
-        receiverMobile: this.data.mobile,
+        receiverMobile: this.data.receiverMobile,
         address: this.data.address,
         region: this.data.region,
         receiverName: this.data.receiverName,

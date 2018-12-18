@@ -9,10 +9,12 @@
   background-color: #AFCB21;
   color: #FFF;
   font-size: 35rpx;
+  line-height: 110rpx;
   position: absolute;
   bottom: 300rpx;
-  left: 25%;
-  width: 50%;
+  left: 10%;
+  width: 80%;
+  height: 110rpx;
   border-radius: 0;
 }
 .userinfo-button::after {
@@ -23,7 +25,7 @@
   font-size: 40rpx;
   color: #000;
   position: absolute;
-  top: 450rpx;
+  top: 400rpx;
 }
 
 .logo {
